@@ -1,5 +1,5 @@
 {
-  "name": "DocuSearchAI",
+  "name": "docusearchai",
   "private": true,
   "scripts": {
     "build": "turbo build",
