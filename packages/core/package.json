@@ -1,7 +1,8 @@
 {
-  "name": "docusearchai",
+  "name": "@docuconvo/core",
   "version": "1.0.0",
   "type": "module",
+  "private": true,
   "dependencies": {
     "@huggingface/inference": "^2.6.4",
     "@pinecone-database/pinecone": "^1.1.2",
@@ -26,6 +27,6 @@
     "test": "echo \"Error: oops, the actor has no tests yet, sad!\" && exit 1",
     "postinstall": "npx crawlee install-playwright-browsers"
   },
-  "author": "Kunal Verma",
+  "author": "kunal00000",
   "license": "AGPL-3.0"
 }
