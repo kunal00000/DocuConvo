@@ -1,6 +1,11 @@
 {
   "name": "docuconvo",
   "private": true,
+  "author": {
+    "name": "kunal00000",
+    "github": "https://github.com/kunal00000",
+    "url": "https://x.com/kunalvermax"
+  },
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",

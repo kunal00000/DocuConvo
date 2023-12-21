@@ -26,7 +26,5 @@
     "build": "tsc",
     "test": "echo \"Error: oops, the actor has no tests yet, sad!\" && exit 1",
     "postinstall": "npx crawlee install-playwright-browsers"
-  },
-  "author": "kunal00000",
-  "license": "AGPL-3.0"
+  }
 }

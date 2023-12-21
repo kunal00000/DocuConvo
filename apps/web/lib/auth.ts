@@ -1,66 +1,71 @@
-import { PrismaAdapter } from "@next-auth/prisma-adapter"
-import { NextAuthOptions } from "next-auth"
-import EmailProvider from "next-auth/providers/email"
-import GoogleProvider from "next-auth/providers/google"
+import { PrismaAdapter } from '@next-auth/prisma-adapter'
+import { NextAuthOptions } from 'next-auth'
+import EmailProvider from 'next-auth/providers/email'
+import GoogleProvider from 'next-auth/providers/google'
 
-import { siteConfig } from "@/config/site"
-import MagicLinkEmail from "@/emails/magic-link-email"
-import { env } from "@/env.mjs"
-import { prisma } from "@/lib/db"
-import { resend } from "./email"
+import { siteConfig } from '@/config/site'
+import MagicLinkEmail from '@/emails/magic-link-email'
+import { env } from '@/env.mjs'
+import { prisma } from '@/lib/db'
+import { resend } from './email'
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   session: {
-    strategy: "jwt",
+    strategy: 'jwt'
   },
   pages: {
-    signIn: "/login",
+    signIn: '/login'
   },
   providers: [
     GoogleProvider({
       clientId: env.GOOGLE_CLIENT_ID,
-      clientSecret: env.GOOGLE_CLIENT_SECRET,
+      clientSecret: env.GOOGLE_CLIENT_SECRET
     }),
     EmailProvider({
       sendVerificationRequest: async ({ identifier, url, provider }) => {
         const user = await prisma.user.findUnique({
           where: {
-            email: identifier,
+            email: identifier
           },
           select: {
             name: true,
-            emailVerified: true,
-          },
-        });
+            emailVerified: true
+          }
+        })
 
-        const userVerified = user?.emailVerified ? true : false;
-        const authSubject = userVerified ? `Sign-in link for ${siteConfig.name}` : "Activate your account";
+        const userVerified = user?.emailVerified ? true : false
+        const authSubject = userVerified
+          ? `Sign-in link for ${siteConfig.name}`
+          : 'Activate your account'
 
         try {
           const result = await resend.emails.send({
-            from: 'SaaS Starter App <onboarding@resend.dev>',
-            to: process.env.NODE_ENV === "development" ? 'delivered@resend.dev' : identifier,
+            from: 'DocuConvo App <onboarding@resend.dev>',
+            to:
+              process.env.NODE_ENV === 'development'
+                ? 'delivered@resend.dev'
+                : identifier,
             subject: authSubject,
             react: MagicLinkEmail({
               firstName: user?.name as string,
               actionUrl: url,
-              mailType: userVerified ? "login" : "register",
+              mailType: userVerified ? 'login' : 'register',
               siteName: siteConfig.name
             }),
             // Set this to prevent Gmail from threading emails.
             // More info: https://resend.com/changelog/custom-email-headers
             headers: {
-              'X-Entity-Ref-ID': new Date().getTime() + "",
-            },
-          });
+              'X-Entity-Ref-ID': new Date().getTime() + ''
+            }
+          })
 
           // console.log(result)
         } catch (error) {
-          throw new Error("Failed to send verification email.")
+          throw new Error('Failed to send verification email.')
         }
-      },
-    }),
+      }
+    })
   ],
   callbacks: {
     async session({ token, session }) {
@@ -76,8 +81,8 @@ export const authOptions: NextAuthOptions = {
     async jwt({ token, user }) {
       const dbUser = await prisma.user.findFirst({
         where: {
-          email: token.email,
-        },
+          email: token.email
+        }
       })
 
       if (!dbUser) {
@@ -91,9 +96,9 @@ export const authOptions: NextAuthOptions = {
         id: dbUser.id,
         name: dbUser.name,
         email: dbUser.email,
-        picture: dbUser.image,
+        picture: dbUser.image
       }
-    },
-  },
+    }
+  }
   // debug: process.env.NODE_ENV !== "production"
 }
