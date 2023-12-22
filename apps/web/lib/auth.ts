@@ -1,10 +1,11 @@
+{
+  /*
 import { PrismaAdapter } from '@next-auth/prisma-adapter'
 import { NextAuthOptions } from 'next-auth'
 import EmailProvider from 'next-auth/providers/email'
 import GoogleProvider from 'next-auth/providers/google'
-
-import { siteConfig } from '@/config/site'
 import MagicLinkEmail from '@/emails/magic-link-email'
+import { siteConfig } from '@/config/site'
 import { env } from '@/env.mjs'
 import { prisma } from '@/lib/db'
 import { resend } from './email'
@@ -102,3 +103,4 @@ export const authOptions: NextAuthOptions = {
   }
   // debug: process.env.NODE_ENV !== "production"
 }
+   */}
