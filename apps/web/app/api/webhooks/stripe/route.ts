@@ -1,3 +1,4 @@
+{ /*
 import { headers } from "next/headers"
 import Stripe from "stripe"
 
@@ -69,3 +70,5 @@ export async function POST(req: Request) {
 
   return new Response(null, { status: 200 })
 }
+
+*/}

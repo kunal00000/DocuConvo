@@ -1,10 +1,8 @@
 "use client";
 
-import useScroll from "@/hooks/use-scroll";
-import { MainNavItem } from "@/types";
+import useScroll from "@/hooks/use-scroll"; import { MainNavItem } from "@/types";
 import { User } from "next-auth";
-import { MainNav } from "./main-nav";
-import { UserAccountNav } from "./user-account-nav";
+import { MainNav } from "./main-nav"; import { UserAccountNav } from "./user-account-nav";
 import { Button, buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -22,7 +20,6 @@ interface NavBarProps {
 
 export function NavBar({ user, items, children, rightElements, scroll = false }: NavBarProps) {
   const scrolled = useScroll(50);
-  const signInModal = useSigninModal();
 
   return (
     <header
@@ -38,22 +35,7 @@ export function NavBar({ user, items, children, rightElements, scroll = false }:
           {rightElements}
 
           <ModeToggle />
-          {!user ? (
-            <Link
-              href="/login"
-              className={cn(
-                buttonVariants({ variant: "outline", size: "sm" })
-              )}
-            >
-              Login Page
-            </Link>
-          ) : null}
 
-          {user ? (
-            <UserAccountNav user={user} />
-          ) : (
-            <Button className="px-3" variant="default" size="sm" onClick={signInModal.onOpen}>Sign In</Button>
-          )}
         </div>
       </div>
     </header>

@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils"
 import { Icons } from "@/components/shared/icons"
 import HeroComponent from "@/components/hero-component"
 import { SiteFooter } from "@/components/layout/site-footer"
+import JoinWaitlist from "@/components/layout/join-waitlist"
 
 export default async function IndexPage() {
 
@@ -13,7 +14,7 @@ export default async function IndexPage() {
     <>
       <section className="space-y-6 pb-12 lg:py-28">
 
-        <div className="items-center flex justify-center ">
+        <div className="items-center flex justify-center w-[100vw]">
           <HeroComponent />
         </div>
 
@@ -31,9 +32,8 @@ export default async function IndexPage() {
           <div
             className="flex animate-fade-up justify-center space-x-2 opacity-0 md:space-x-4" style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}
           >
-            <Link href="/" className={cn(buttonVariants({ size: "lg" }))}>
-              Get Started
-            </Link>
+
+            <JoinWaitlist />
             <Link
               href={siteConfig.links.github}
               target="_blank"
@@ -54,5 +54,3 @@ export default async function IndexPage() {
     </>
   )
 }
-
-
