@@ -2,10 +2,8 @@ import { HuggingFaceInferenceEmbeddings } from 'langchain/embeddings/hf'
 import { PineconeStore } from 'langchain/vectorstores/pinecone'
 
 import { pinecone } from './pinecone'
-import dotenv from 'dotenv'
 import { DocMetadata } from '../types/docs'
 import { type Config } from '../config'
-dotenv.config()
 
 // TODO: handle when vector store is not pinecone
 // TODO: handle when embeddings are stored already
@@ -24,9 +22,9 @@ export async function generateEmbeddings(
   if (isExist) {
     // delete existing embeddings
     // TODO: Delete for same urls only not for all (org and project)
-    // TODO: Alert not working for Starter subscription
-    // TODO: Switch to supabase
-    pineconeIndex.deleteMany({ org: config.org.name, project: config.org.name })
+    // TODO: Filters in this operation are not supported 'Starter'
+    // TODO: Switch to supabase or Use deleteAll for now (self-host)
+    pineconeIndex.deleteAll()
   }
 
   await PineconeStore.fromTexts(
@@ -64,8 +62,8 @@ export async function checkIfEmbeddingsExist(config: Config) {
     })
 
     if (results.length > 0) {
-      return { isExist: true, length: results.length }
+      return { isExist: true, count: results.length }
     }
   }
-  return { isExist: false, length: 0 }
+  return { isExist: false, count: 0 }
 }

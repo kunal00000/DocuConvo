@@ -1,8 +1,5 @@
 import { PlaywrightCrawler } from 'crawlee'
-import {
-  checkIfEmbeddingsExist,
-  generateEmbeddings
-} from './lib/generate-embeddings'
+import { generateEmbeddings } from './lib/generate-embeddings'
 import { config } from './config'
 import { DocMetadata } from './types/docs'
 

@@ -1,9 +1,7 @@
 import { HuggingFaceInferenceEmbeddings } from 'langchain/embeddings/hf'
 import { pinecone } from './pinecone'
 import { PineconeStore } from 'langchain/vectorstores/pinecone'
-import dotenv from 'dotenv'
 import { Config } from '../config'
-dotenv.config()
 
 export async function getVectorSearch(
   query: string,
