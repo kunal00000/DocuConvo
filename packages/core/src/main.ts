@@ -1,48 +1,62 @@
-// For more information, see https://crawlee.dev/
 import { PlaywrightCrawler } from 'crawlee'
-import { generateEmbeddings } from './utils/generate-embeddings'
-import { getSimilaritySearchResults } from './utils/get-similar-results'
+import {
+  checkIfEmbeddingsExist,
+  generateEmbeddings
+} from './lib/generate-embeddings'
+import { config } from './config'
+import { DocMetadata } from './types/docs'
+
+let data: DocMetadata[] = []
+const saveData = ({ title, url, text }: DocMetadata) => {
+  // TODO: optimise to check if doc with title already exist in data
+  let isExist = false
+  data.forEach((d) => {
+    if (d.url === url) {
+      isExist = true
+      return
+    }
+  })
+  if (!isExist) data.push({ title, url, text })
+}
 
 const crawler = new PlaywrightCrawler({
   requestHandler: async ({ page, request, enqueueLinks, pushData, log }) => {
     await enqueueLinks({
-      // Queue all link with this pattern to crawl
-      globs: ['https://nextjs.org/docs/**/*']
+      globs:
+        typeof config.crawlInfo.match === 'string'
+          ? [config.crawlInfo.match]
+          : config.crawlInfo.match // Queue all link with this pattern to crawl
     })
 
-    // Wait for the <article> to render.
-    await page.waitForSelector('article')
     const title = await page.title()
-    // log.info(`${title}`, { url: request.loadedUrl })
-    console.log(`✅ ${title}, ${request.url}`)
+    log.info(`✅ ${title}`, { url: request.loadedUrl })
 
-    // Execute a function in the browser which targets
-    // the article elements and allows their manipulation.
-    const docsContent = await page.$$eval('[data-docs]', (els) => {
-      // Extract text content from the
-      return els.map((el) => el.textContent)
-    })
+    let docTextContent: string | null
 
-    const datasets = docsContent.map((text) => {
-      // Remove extra \n and spacess to save storage and tokens
-      const textWithoutNextLine = text?.replace(/\n/g, ' ')
-      const cleanText = textWithoutNextLine?.replace(/\s+/g, ' ')
+    if (config.crawlInfo.selector) {
+      await page.waitForSelector(config.crawlInfo.selector)
+      docTextContent = await page.$eval(
+        config.crawlInfo.selector,
+        (el) => el.textContent
+      )
+    } else {
+      docTextContent = await page.textContent('body') // If selector is not provided, extract all text from the page.
+    }
 
-      pushData({ title, url: request.loadedUrl, text: cleanText })
-      return { title, url: request.loadedUrl, text: cleanText }
-    })
+    // Remove extra \n and spacess to save storage and tokens
+    const cleanText = docTextContent?.replace(/\n/g, ' ').replace(/\s+/g, ' ')
 
-    // Generate and store embeddings for the dataset to be searchable.
-    generateEmbeddings([...new Set(datasets)])
+    pushData({ title, url: request.loadedUrl, text: cleanText })
+    // save data for further creating and storing embeddings
+    saveData({ title, url: request.loadedUrl, text: cleanText })
   },
   headless: true,
-  // Comment this option to scrape the full website.
-  maxRequestsPerCrawl: 8
+  maxRequestsPerCrawl: config.crawlInfo.maxPagesToCrawl
 })
 
-await crawler.run(['https://nextjs.org/docs']).then(async () => {
-  console.log('crawling done 🚀, now question time...')
-
-  const response = await getSimilaritySearchResults('What is parallel routing?')
-  console.log('🔴 Found ', response)
-})
+try {
+  await crawler.run([config.crawlInfo.startingUrl])
+  await generateEmbeddings(data, config)
+} catch (e) {
+  console.log(e)
+}
