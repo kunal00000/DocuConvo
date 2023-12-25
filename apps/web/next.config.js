@@ -6,6 +6,7 @@ import('./env.mjs')
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  transpilePackages: ['@docuconvo/core'],
   swcMinify: true,
   images: {
     remotePatterns: [
