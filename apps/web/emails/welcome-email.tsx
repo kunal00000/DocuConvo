@@ -37,9 +37,9 @@ export const DocuConvoWelcomeEmail = ({
           Welcome to DocuConvo, the perfect solution for getting things done quickly with Documentation!! 
         </Text>
         <Text style={paragraph}>
-          {"  "} {"  "} {"  "} We are Extremely Delited to have you onboard, hang tight we will be launching Soon 
+          {"  "} {"  "} {"  "} We are Extremely Delighted to have you onboard, hang tight we will be launching Soon 
         </Text>
-        <Text style={paragraph}>
+l       <Text style={paragraph}>
           Best,
           <br />
           The DocuConvo team {" ❤️"}

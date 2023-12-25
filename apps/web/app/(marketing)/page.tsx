@@ -7,12 +7,15 @@ import { Icons } from "@/components/shared/icons"
 import HeroComponent from "@/components/hero-component"
 import { SiteFooter } from "@/components/layout/site-footer"
 import JoinWaitlist from "@/components/layout/join-waitlist"
+import { Toaster } from "@/components/ui/toaster"
+
 
 export default async function IndexPage() {
 
   return (
     <>
       <section className="space-y-6 pb-12 lg:py-28">
+        <Toaster />
 
         <div className="items-center flex justify-center w-[100vw]">
           <HeroComponent />

@@ -8,8 +8,10 @@ import { useSigninModal } from "@/hooks/use-signin-modal";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import axios from 'axios'
+import { useToast } from "../ui/use-toast";
 
 export const SignInModal = () => {
+  const { toast } = useToast()
   const signInModal = useSigninModal();
   const [username, setUsername] = useState<string>('')
   const [email, setEmail] = useState<string>('')
@@ -21,10 +23,14 @@ export const SignInModal = () => {
       email: email
     }
     console.log(data)
-    
-    await axios.post('http://localhost:3000/api/sendemail', data)
+
+    const res = await axios.post('http://localhost:3000/api/sendemail', data)
+    toast({
+      title: "🤗❤️🤗",
+      description: `${res.data.res}`
+    })
     signInModal.onClose()
-    
+
   }
 
   return (

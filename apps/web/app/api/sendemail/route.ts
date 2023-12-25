@@ -18,7 +18,7 @@ export async function POST(req: Request, res: NextResponse) {
 
 	if (isUserExist) {
 		return NextResponse.json({
-			res: 'You are already in Wailist'
+			res: 'You are already in Wailist! Thanks for Supporting DocuConvo'
 		})
 	}
 
@@ -32,14 +32,14 @@ export async function POST(req: Request, res: NextResponse) {
 
 	try {
 		const data = await resend.emails.send({
-			from: 'DocuConvo <onboarding@resend.dev>',
+			from: 'DocuConvo <wassup@adityadafe.rocks>',
 			to: [bodyData.email],
 			subject: 'Onboarding Mail From DocuConvo',
 			react: DocuConvoWelcomeEmail({ userFirstname: bodyData.username }) as React.ReactElement
 		});
-		return Response.json(data);
+		return Response.json({ res: 'Yay you are now part of DocuConvo Waitlist' });
 	} catch (error) {
-		return Response.json({ error });
+		return Response.json({ res: 'Something Went Wrong Can You Try Again?' });
 	}
 }
 
