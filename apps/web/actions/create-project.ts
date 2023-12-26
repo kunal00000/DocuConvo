@@ -1,6 +1,6 @@
 'use server'
 
-import { prisma } from '@/lib/db'
+import { prisma } from '@docuconvo/database'
 import { revalidatePath } from 'next/cache'
 import { getCurrentUser } from '@/lib/session'
 import { ProjectForm } from '@/lib/validations/add-project-form'

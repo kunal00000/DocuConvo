@@ -5,7 +5,7 @@ import GoogleProvider from 'next-auth/providers/google'
 import MagicLinkEmail from '@/emails/magic-link-email'
 import { siteConfig } from '@/config/site'
 import { env } from '@/env.mjs'
-import { prisma } from '@/lib/db'
+import { prisma } from '@docuconvo/database'
 import { resend } from './email'
 
 export const authOptions: NextAuthOptions = {
@@ -43,7 +43,7 @@ export const authOptions: NextAuthOptions = {
             from: 'DocuConvo App <onboarding@resend.dev>',
             to:
               process.env.NODE_ENV === 'development'
-                ? 'delivered@resend.dev'
+                ? 'kunalverma2468@gmail.com'
                 : identifier,
             subject: authSubject,
             react: MagicLinkEmail({

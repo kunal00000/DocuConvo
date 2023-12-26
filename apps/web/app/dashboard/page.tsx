@@ -5,7 +5,7 @@ import { getCurrentUser } from '@/lib/session'
 import { EmptyPlaceholder } from '@/components/shared/empty-placeholder'
 import { DashboardHeader } from '@/components/dashboard/header'
 import { DashboardShell } from '@/components/dashboard/shell'
-import { prisma } from '@/lib/db'
+import { prisma } from '@docuconvo/database'
 import CreateButton, {
   AddButton
 } from '@/components/dashboard/add-project-button'
