@@ -1,5 +1,3 @@
-{
-  /*
 import { PrismaAdapter } from '@next-auth/prisma-adapter'
 import { NextAuthOptions } from 'next-auth'
 import EmailProvider from 'next-auth/providers/email'
@@ -103,4 +101,3 @@ export const authOptions: NextAuthOptions = {
   }
   // debug: process.env.NODE_ENV !== "production"
 }
-   */}
