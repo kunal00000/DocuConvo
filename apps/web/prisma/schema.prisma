@@ -56,12 +56,13 @@ enum ProjectStatus {
 }
 
 model Project {
-  id                      String @id @default(cuid())
+  id                      String  @id @default(cuid())
+  docuconvo_key           String? @unique
   name                    String
-  websiteUrl              String @map(name: "website_url")
+  websiteUrl              String  @map(name: "website_url")
   match                   String
-  cssSelector             String @map(name: "css_selector")
-  maxPageToCrawl          Int?   @map(name: "max_page_to_crawl")
+  cssSelector             String  @map(name: "css_selector")
+  maxPageToCrawl          Int?    @map(name: "max_page_to_crawl")
   numberOfRequests        Int?
   numberOfArticlesCrawled Int?
 

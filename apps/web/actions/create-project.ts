@@ -28,7 +28,7 @@ export async function createProject({
       return { status: 'error', message: 'Project name already exists.' }
     }
 
-    await prisma.project.create({
+    const { creatorId, id } = await prisma.project.create({
       data: {
         name: project.projectName,
         websiteUrl: project.websiteUrl,
@@ -41,6 +41,16 @@ export async function createProject({
         openaiApiKey: openai.openai_ApiKey,
         status: 'embedding',
         creatorId: user?.id
+      }
+    })
+
+    await prisma.project.update({
+      where: {
+        id,
+        creatorId
+      },
+      data: {
+        docuconvo_key: `sk-${creatorId}${id}`
       }
     })
 
