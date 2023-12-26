@@ -1,17 +1,16 @@
-"use client"
+'use client'
 
-import { useSigninModal } from "@/hooks/use-signin-modal";
-import { Button } from "../ui/button";
+import { useSigninModal } from '@/hooks/use-modal'
+import { Button } from '@/components/ui/button'
 
 export default function JoinWaitlist() {
-
-  const signInModal = useSigninModal();
+  const signInModal = useSigninModal()
 
   return (
     <>
-
-      <Button className="px-3" variant="default" onClick={signInModal.onOpen}>Join Waitlist</Button>
-
+      <Button className='px-3' variant='default' onClick={signInModal.onOpen}>
+        Join Waitlist
+      </Button>
     </>
   )
 }

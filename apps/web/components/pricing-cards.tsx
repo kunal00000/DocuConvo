@@ -8,7 +8,7 @@ import { Icons } from '@/components/shared/icons'
 import { Button, buttonVariants } from '@/components/ui/button'
 import { Switch } from '@/components/ui/switch'
 import { pricingData } from '@/config/subscriptions'
-import { useSigninModal } from '@/hooks/use-signin-modal'
+import { useSigninModal } from '@/hooks/use-modal'
 import { UserSubscriptionPlan } from '@/types'
 
 interface PricingCardsProps {
