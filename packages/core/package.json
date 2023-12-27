@@ -6,6 +6,7 @@
   "dependencies": {
     "@huggingface/inference": "^2.6.4",
     "@pinecone-database/pinecone": "^1.1.2",
+    "@types/express": "^4.17.21",
     "crawlee": "^3.0.0",
     "langchain": "^0.0.209",
     "playwright": "*",
