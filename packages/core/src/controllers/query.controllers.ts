@@ -1,44 +1,52 @@
 import { Pinecone } from '@pinecone-database/pinecone'
 import type { Request, Response } from 'express'
 import { HuggingFaceInferenceEmbeddings } from 'langchain/embeddings/hf'
+import { OpenAIEmbeddings } from 'langchain/embeddings/openai'
 import { PineconeStore } from 'langchain/vectorstores/pinecone'
 
-export const searchQuery = (req: Request, res: Response) => {
+export const searchQuery = async (req: Request, res: Response) => {
+  const {
+    pineconeApiKey,
+    pineconeEnvironment,
+    pineconeIndexName,
+    openaiApiKey,
+    projectId,
+    searchQuery
+  } = req.body
+
   try {
-    const { searchQuery: query } = req.body
-    console.log(searchQuery)
+    const pinecone = new Pinecone({
+      apiKey: pineconeApiKey,
+      environment: pineconeEnvironment
+    })
 
-    // const pinecone = new Pinecone({
-    //   apiKey: apiKey,
-    //   environment: environment
-    // })
+    const pineconeIndex = await pinecone.Index(pineconeIndexName)
 
-    // const embeddings = new HuggingFaceInferenceEmbeddings({
-    //   model: embeddingModel,
-    //   apiKey: apiKey
-    // })
+    const embeddings = new HuggingFaceInferenceEmbeddings({
+      model: 'sentence-transformers/all-MiniLM-L6-v2',
+      apiKey: openaiApiKey
+    })
 
-    // const pineconeIndex = await pinecone.Index(indexName)
+    const vectorStore = await PineconeStore.fromExistingIndex(embeddings, {
+      pineconeIndex
+    })
 
-    // const vectorStore = await PineconeStore.fromExistingIndex(embeddings, {
-    //   pineconeIndex
-    // })
+    // similar vectors
+    const results = await vectorStore.similaritySearch(searchQuery, 2, {
+      project: projectId
+    })
 
-    // const results = await vectorStore.similaritySearch(query, maxResults, {
-    //   project: projectName
-    // })
-
-    // further provide the results to GPT-3.5 to get the answer
+    // TODO: gpt interaction
 
     return res.status(200).json({
       success: true,
-      message: 'here is your answer',
-      answer: 'answer'
+      message: 'Answer generated successfully.',
+      answer: results
     })
   } catch (err: any) {
     return res.status(404).json({
       success: false,
-      message: `Something went wrong: ${err.message}`,
+      message: `Something went wrong: ${err.message}.`,
       answer: null
     })
   }

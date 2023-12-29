@@ -4,6 +4,10 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 export async function crawlController(req: Request, res: Response) {
+  const token = req.headers.authorization?.split(' ')[1] // Bearer <token>
+  if (!token || token !== process.env.AuthToken)
+    return res.status(401).json({ message: 'Not authorized' })
+
   const {
     websiteUrl,
     match,

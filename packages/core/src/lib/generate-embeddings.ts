@@ -44,7 +44,7 @@ export async function generateEmbeddings(
     // TODO: Delete for same urls only not for all (org and project)
     // TODO: Filters in this operation are not supported 'Starter'
     // TODO: Switch to supabase or Use deleteAll for now (self-host)
-    pineconeIndex.deleteAll()
+    await pineconeIndex.deleteAll()
   }
 
   await PineconeStore.fromTexts(
@@ -52,7 +52,7 @@ export async function generateEmbeddings(
     dataset.map((data) => {
       return {
         url: data.url,
-        projectId: projectId
+        project: projectId
       }
     }),
     embeddings,
@@ -73,7 +73,7 @@ export async function checkIfEmbeddingsExist(
     })
 
     const results = await vectorStore.similaritySearch('', 1000, {
-      projectId: projectId
+      project: projectId
     })
 
     if (results.length > 0) {
