@@ -1,23 +1,43 @@
 import { HuggingFaceInferenceEmbeddings } from 'langchain/embeddings/hf'
 import { PineconeStore } from 'langchain/vectorstores/pinecone'
 
-import { pinecone } from './pinecone'
 import { DocMetadata } from '../types/docs'
-import { type Config } from '../config'
+import { Index, Pinecone, RecordMetadata } from '@pinecone-database/pinecone'
 
 // TODO: handle when vector store is not pinecone
 // TODO: handle when embeddings are stored already
 export async function generateEmbeddings(
   dataset: DocMetadata[],
-  config: Config
+  {
+    pineconeApiKey,
+    pineconeEnvironment,
+    pineconeIndexName,
+    hfApiKey,
+    projectId
+  }: {
+    pineconeApiKey: string
+    pineconeEnvironment: string
+    pineconeIndexName: string
+    hfApiKey: string
+    projectId: string
+  }
 ) {
-  const { isExist } = await checkIfEmbeddingsExist(config)
-  const pineconeIndex = await pinecone.Index(config.pinecone?.indexName!)
+  const pinecone = new Pinecone({
+    apiKey: pineconeApiKey,
+    environment: pineconeEnvironment
+  })
+
+  const pineconeIndex = await pinecone.Index(pineconeIndexName)
 
   const embeddings = new HuggingFaceInferenceEmbeddings({
-    model: config.huggingface?.embeddingModel,
-    apiKey: config.huggingface?.apiKey
+    model: 'sentence-transformers/all-MiniLM-L6-v2',
+    apiKey: hfApiKey
   })
+  const { isExist } = await checkIfEmbeddingsExist(
+    pineconeIndex,
+    embeddings,
+    projectId
+  )
 
   if (isExist) {
     // delete existing embeddings
@@ -32,8 +52,7 @@ export async function generateEmbeddings(
     dataset.map((data) => {
       return {
         url: data.url,
-        org: config.org.name,
-        project: config.org.projectName
+        projectId: projectId
       }
     }),
     embeddings,
@@ -41,14 +60,11 @@ export async function generateEmbeddings(
   )
 }
 
-export async function checkIfEmbeddingsExist(config: Config) {
-  const pineconeIndex = await pinecone.Index(config.pinecone?.indexName!)
-
-  const embeddings = new HuggingFaceInferenceEmbeddings({
-    model: config.huggingface?.embeddingModel,
-    apiKey: config.huggingface?.apiKey
-  })
-
+export async function checkIfEmbeddingsExist(
+  pineconeIndex: Index<RecordMetadata>,
+  embeddings: HuggingFaceInferenceEmbeddings,
+  projectId: string
+) {
   const { totalRecordCount } = await pineconeIndex.describeIndexStats()
 
   if (totalRecordCount && totalRecordCount > 0) {
@@ -57,8 +73,7 @@ export async function checkIfEmbeddingsExist(config: Config) {
     })
 
     const results = await vectorStore.similaritySearch('', 1000, {
-      org: config.org.name,
-      project: config.org.projectName
+      projectId: projectId
     })
 
     if (results.length > 0) {

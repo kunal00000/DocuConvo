@@ -1,6 +1,8 @@
 import cors from 'cors'
-import express, { type Request, type Response } from 'express'
+import express from 'express'
 import queryRouter from './routes/query.routes'
+import crawlRouter from './routes/crawl.routes'
+import { crawlAuth } from './middlewares/auth.middleware'
 
 const app = express()
 const PORT = process.env.PORT || 3000
@@ -10,9 +12,7 @@ app.use(express.json())
 app.use(cors({ origin: '*' })) // default: allows all origins to access the server
 
 // * routes
-app.get('/', (res: Response) => {
-  res.status(200).json({ message: 'Welcome to Create-KREST API' })
-})
+app.use('/api', crawlAuth, crawlRouter)
 app.use('/api', queryRouter)
 
 app.listen(PORT, () => {
