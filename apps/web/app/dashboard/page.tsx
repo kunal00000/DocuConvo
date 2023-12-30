@@ -9,6 +9,7 @@ import { prisma } from '@docuconvo/database'
 import CreateButton, {
   AddButton
 } from '@/components/dashboard/add-project-button'
+import {DocsLists} from "@/components/dashboard/docs-list"
 
 export const metadata = {
   title: 'Dashboard'
@@ -27,29 +28,21 @@ export default async function DashboardPage() {
     }
   })
 
+
   return (
     <DashboardShell>
       <DashboardHeader heading='Dashboard' text='Create and manage projects.'>
         <AddButton />
       </DashboardHeader>
       <div>
-        {userProjects.length > 0 ? (
-          <div>
-            Projects
-            {userProjects.map((project) => (
-              <div>{project.name}</div>
-            ))}
-          </div>
-        ) : (
-          <EmptyPlaceholder>
-            <EmptyPlaceholder.Icon name='post' />
-            <EmptyPlaceholder.Title>No projects found</EmptyPlaceholder.Title>
-            <EmptyPlaceholder.Description>
-              You don&apos;t have any project yet. Start a project now.
-            </EmptyPlaceholder.Description>
-            <CreateButton />
-          </EmptyPlaceholder>
-        )}
+      {!userProjects.length ? <EmptyPlaceholder>
+          <EmptyPlaceholder.Icon name="post" />
+          <EmptyPlaceholder.Title>No content created</EmptyPlaceholder.Title>
+          <EmptyPlaceholder.Description>
+            You don&apos;t have any content yet. Start creating content.
+          </EmptyPlaceholder.Description>
+          <CreateButton/>
+        </EmptyPlaceholder>:<DocsLists userProjects={userProjects}/>}
       </div>
     </DashboardShell>
   )
