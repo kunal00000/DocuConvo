@@ -10,10 +10,10 @@ export const searchQuery = async (req: Request, res: Response) => {
     pineconeEnvironment,
     pineconeIndexName,
     openaiApiKey,
-    projectId,
-    searchQuery
+    projectId
   } = req.body
 
+  const searchQuery = req.query.q as string
   try {
     const pinecone = new Pinecone({
       apiKey: pineconeApiKey,

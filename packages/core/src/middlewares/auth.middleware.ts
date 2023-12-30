@@ -6,11 +6,11 @@ export const queryAuth = async (
   res: Response,
   next: NextFunction
 ) => {
-  const api_key_header = req.headers['x-security-path'] // <API KEY: sk-()()>
-  if (api_key_header && typeof api_key_header === 'string') {
+  const token = req.headers.authorization?.split(' ')[1] // <Bearer sk-()()>
+  if (token) {
     try {
-      const creatorId = api_key_header.slice(3, 28)
-      const projectId = api_key_header.slice(28, 53)
+      const creatorId = token.slice(3, 28)
+      const projectId = token.slice(28, 53)
 
       const data = await prisma.project.findUnique({
         where: {
@@ -30,7 +30,6 @@ export const queryAuth = async (
       }
 
       req.body = {
-        ...req.body,
         pineconeApiKey: data['pineconeApiKey'],
         pineconeEnvironment: data['pineconeEnvironment'],
         pineconeIndexName: data['pineconeIndexName'],

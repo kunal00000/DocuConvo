@@ -1,0 +1,15 @@
+{
+  "name": "docuconvo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "dev": "tsc & node ./dist/client.js",
+    "build": "tsc"
+  },
+  "keywords": [],
+  "devDependencies": {
+    "@types/node": "^20.10.5"
+  }
+}
