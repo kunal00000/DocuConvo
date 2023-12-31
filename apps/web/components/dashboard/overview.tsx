@@ -19,7 +19,7 @@ import {
 
 
 
-export const Overview = ({docItem}:any) => {
+export const Overview = ({project}:any) => {
 
       
 

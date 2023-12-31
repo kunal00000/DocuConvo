@@ -12,7 +12,7 @@ import {DocsHeader} from "@/components/dashboard/docs-header"
 
 
 export default async function Page({ params }) {
-  const docItem = await prisma.project.findFirst({
+  const project = await prisma.project.findFirst({
     where: {
       id: params.docs
     }
@@ -21,7 +21,7 @@ export default async function Page({ params }) {
 
   
     return <DashboardShell>
-    <DocsHeader docItem={docItem} items={items}/>
+    <DocsHeader project={project} items={items}/>
  <div>usqage</div>
     
       </DashboardShell>

@@ -13,7 +13,7 @@ import {DocsHeader} from "@/components/dashboard/docs-header"
 
 
 export default async function Page({ params }) {
-  const docItem = await prisma.project.findFirst({
+  const project = await prisma.project.findFirst({
     where: {
       id: params.docs
     }
@@ -22,14 +22,14 @@ export default async function Page({ params }) {
 
   
     return <DashboardShell>
-    <DocsHeader docItem={docItem} items={items}/>
+    <DocsHeader project={project} items={items}/>
 
-    {docItem?.status ==="embedding"&&(
+    {project?.status ==="embedding"&&(
       <div className="flex flex-col gap-4">
         making your docs full of knowledge...
 </div>
     )}
-    {docItem?.status ==="created"&& <Overview docItem={docItem}/>}
+    {project?.status ==="created"&& <Overview project={project}/>}
     
       </DashboardShell>
   }

@@ -6,10 +6,10 @@ import { Icons } from "@/components/shared/icons"
 import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
 
-export function DocsHeader({docItem, items}) {
+export function DocsHeader({project, items}) {
   return (
     <div className="">
-            <DashboardHeader heading={docItem!.name} text={docItem?.websiteUrl}>
+            <DashboardHeader heading={project!.name} text={project?.websiteUrl}>
       </DashboardHeader>
       <Card className=" mt-2 flex h-max    w-max items-center ">
         <CardContent className="flex items-center pb-0">
@@ -18,7 +18,7 @@ export function DocsHeader({docItem, items}) {
         const Icon = Icons[item.icon || "arrowRight"]
         return (
           item.href && (
-            <Link key={index} href={item.disabled ? "/" :"/dashboard/"+ docItem?.id+ item.href}>
+            <Link key={index} href={item.disabled ? "/" :"/dashboard/"+ project?.id+ item.href}>
               <span
                 className={cn(
                   "group flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground",
