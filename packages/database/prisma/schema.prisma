@@ -56,7 +56,7 @@ enum ProjectStatus {
 }
 
 model Project {
-  id                      String  @id @default(cuid())
+  id                      String  @id @default(cuid()) @unique
   docuconvo_key           String? @unique
   name                    String
   websiteUrl              String  @map(name: "website_url")

@@ -8,6 +8,7 @@ import { DashboardShell } from "@/components/dashboard/shell"
 import { Button } from "@/components/ui/button"
 
 import { Card, CardContent } from "@/components/ui/card"
+import { ProjectSettingForm } from "@/components/dashboard/project-dashboard"
 import {DocsHeader} from "@/components/dashboard/docs-header"
 
 
@@ -23,6 +24,6 @@ export default async function Page({ params }) {
   
     return <DashboardShell>
     <DocsHeader docItem={docItem} items={items}/>
-    <div>setting</div>
+<ProjectSettingForm project={docItem}/>
       </DashboardShell>
   }
