@@ -7,9 +7,11 @@ DocuConvo is an innovative application that combines traditional documentation w
 DocuConvo operates in the following steps:
 
 1. **Crawling Documentation Website:**
+
    - Our application crawls the entire documentation website provided by the organization.
 
 2. **Creating Knowledge Base:**
+
    - The crawled information is processed and converted into vector embeddings.
    - Vector embeddings are saved into the Pinecone vector database as an index.
 
@@ -22,9 +24,11 @@ DocuConvo operates in the following steps:
 To create a knowledge base for their documentation website, organizations need to provide the following details:
 
 1. **Documentation Website URL:**
+
    - Example: `https://nextjs.org/docs`
 
 2. **Documentation Website URL Match:**
+
    - Example: `https://nextjs.org/docs/**`
    - This is a URL pattern that describes the structure of the documentation URLs. Use a wildcard (`**`) to capture variations.
 
@@ -43,16 +47,14 @@ To create a knowledge base for their documentation website, organizations need t
 
 &emsp;The last step is to enter the OpenAI API key, which will be used to generate responses for search queries with documentation context.
 
-## Code Sample
-
-After completing the above setup, organizations can use the following code sample to integrate DocuConvo into their applications:
+## Usage
 
 ```javascript
-import { Docuconvo } from 'docuconvo';
+import { Docuconvo } from 'docuconvo'
 
 const docuconvo = new Docuconvo({
   docuconvo_key: 'your-docuconvo-key'
-});
+})
 
-const { answer, message, error } = await docuconvo.search(searchQuery);
+const { answer, message, error } = await docuconvo.search(searchQuery)
 ```
