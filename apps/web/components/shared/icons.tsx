@@ -23,10 +23,10 @@ import {
   User,
   X,
   LucideIcon,
+  ClipboardCopy
 } from "lucide-react"
 
 export type Icon = LucideIcon
-
 export const Icons = {
   add: Plus,
   arrowRight: ArrowRight,
@@ -34,6 +34,7 @@ export const Icons = {
   chevronLeft: ChevronLeft,
   chevronRight: ChevronRight,
   check: Check,
+  clipboard: ClipboardCopy,
   close: X,
   ellipsis: MoreVertical,
   gitHub: ({ ...props }: LucideProps) => (
