@@ -1,81 +1,58 @@
-# Turborepo starter
+## Introduction
 
-This is an official starter Turborepo.
+DocuConvo is an innovative application that combines traditional documentation with conversational AI capabilities powered by GPT-3.5. This allows organizations to enhance their documentation search experience by enabling users to converse with the documentation.
 
-## Using this example
+## How DocuConvo Works Internally
 
-Run the following command:
+DocuConvo operates in the following steps:
 
-```sh
-npx create-turbo@latest
+1. **Crawling Documentation Website:**
+   - Our application crawls the entire documentation website provided by the organization.
+
+2. **Creating Knowledge Base:**
+   - The crawled information is processed and converted into vector embeddings.
+   - Vector embeddings are saved into the Pinecone vector database as an index.
+
+3. **Search Process:**
+   - When a search request is received from the organization's search bar, it is compared against the knowledge base using vector embeddings.
+   - Similar vectors are passed to GPT3.5 as context, along with the search query.
+
+## Get Started
+
+To create a knowledge base for their documentation website, organizations need to provide the following details:
+
+1. **Documentation Website URL:**
+   - Example: `https://nextjs.org/docs`
+
+2. **Documentation Website URL Match:**
+   - Example: `https://nextjs.org/docs/**`
+   - This is a URL pattern that describes the structure of the documentation URLs. Use a wildcard (`**`) to capture variations.
+
+3. **CSS Selector for Main Text Content:**
+   - This selector helps identify the main content area of the documentation, increasing the accuracy of the context passed to GPT.
+
+### &ensp;Pinecone Details
+
+&emsp;To store vector embeddings, ensuring complete ownership of your data:
+
+1. **Pinecone API Key**
+2. **Pinecone Index Name**
+3. **Pinecone Environment**
+
+### &ensp;OpenAI API Key
+
+&emsp;The last step is to enter the OpenAI API key, which will be used to generate responses for search queries with documentation context.
+
+## Code Sample
+
+After completing the above setup, organizations can use the following code sample to integrate DocuConvo into their applications:
+
+```javascript
+import { Docuconvo } from 'docuconvo';
+
+const docuconvo = new Docuconvo({
+  docuconvo_key: 'your-docuconvo-key'
+});
+
+const { answer, message, error } = await docuconvo.search(searchQuery);
 ```
-
-## What's inside?
-
-This Turborepo includes the following packages/apps:
-
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm dev
-```
-
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
