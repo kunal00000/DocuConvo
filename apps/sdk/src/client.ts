@@ -23,15 +23,3 @@ export class Docuconvo {
     }
   }
 }
-
-;(async () => {
-  try {
-    const x = new Docuconvo({
-      docuconvo_key: 'sk-clqmwe56l0000pexxj6cntpulclqr4gbnn0001pjampa2l9tkt'
-    })
-    const data = await x.search('useState is not working.')
-    console.log(data)
-  } catch (error) {
-    console.error('Error during execution:', error)
-  }
-})()
