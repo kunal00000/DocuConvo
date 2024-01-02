@@ -12,7 +12,6 @@
     "email": "email dev --dir emails --port 3333"
   },
   "dependencies": {
-    "@docuconvo/core": "workspace:*",
     "@docuconvo/database": "workspace:*",
     "@hookform/resolvers": "^3.3.2",
     "@next-auth/prisma-adapter": "^1.0.7",
