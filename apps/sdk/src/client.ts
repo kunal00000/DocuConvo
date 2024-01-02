@@ -17,6 +17,7 @@ export class Docuconvo {
       )
 
       const data = await response.json()
+      if (data.error) throw new Error(data.error.message)
       return data
     } catch (error) {
       throw error // Rethrow the error for further handling
