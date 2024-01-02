@@ -58,3 +58,14 @@ const docuconvo = new Docuconvo({
 
 const { answer, message, error } = await docuconvo.search(searchQuery)
 ```
+
+## Acknowledgments 
+DocuConvo draws inspiration from the [BuilderIO/gpt-crawler](https://github.com/BuilderIO/gpt-crawler) project, GPT-Crawler focuses on crawling documentation websites to generate knowledge files for use with OpenAI assistants, DocuConvo takes it a step further by directly integrating the conversational search capability into the documentation website itself.
+
+By combining the information retrieval capabilities of a web crawler with the natural language processing power of GPT-3.5, DocuConvo provides an immersive and interactive experience for users seeking information within documentation.
+
+## Contributors
+A big thank you to the following contributors who have played a significant role in the development of DocuConvo:
+<a href="https://github.com/kunal00000/DocuConvo/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=kunal00000/DocuConvo" />
+</a>
