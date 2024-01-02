@@ -12,7 +12,7 @@ export function DocsHeader({project, items}) {
             <DashboardHeader heading={project!.name} text={project?.websiteUrl}>
       </DashboardHeader>
       <Card className=" mt-2 flex h-max    w-max items-center ">
-        <CardContent className="flex items-center pb-0">
+        <CardContent className="flex  items-center px-1 pb-0">
   <nav className=" my-1  flex items-start gap-2 ">
       {items.map((item, index) => {
         const Icon = Icons[item.icon || "arrowRight"]
