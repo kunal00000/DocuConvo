@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils'
 
 export function DocsHeader({ project, items }) {
   return (
-    <div className=''>
+    <div >
       <DashboardHeader
         heading={project!.name}
         text={project?.websiteUrl}></DashboardHeader>
