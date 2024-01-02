@@ -36,64 +36,6 @@ export const Overview = ({ project }: any) => {
 
   return (
     <Card className="">
-      {/* <CardHeader>
-        <CardTitle>Overview</CardTitle>
-        <CardDescription>
-          here is the overview of your project
-        </CardDescription>
-      </CardHeader>
-
-      <CardContent>
-        <CardTitle>
-          Your project is {project?.status}
-        </CardTitle>
-        <CardDescription className="pt-2  ">
-
-       <p className="flex items-center  gap-1">  Your docuconvo key is  <span className="select-none flex items-center gap-1 p-1 py-[2px] w-max font-mono bg-[#f7fbfc] hover:bg-gray-100 rounded-sm border  cursor-context-menu" onClick={() => {
-            navigator.clipboard.writeText(project?.docuconvo_key);
-            toast({
-              title: 'Success!',
-              description: "copied to clipboard",
-              variant: 'default'
-            })
-          }}> {project?.docuconvo_key} <Icons.clipboard /> </span></p> 
-<div>
- <h3 className="pt-1 mt-3 text-base font-semibold   text-black ">
-  Here is example of how to use it in your code
- </h3>
-  <div className="mt-2  p-2  rounded-md md:flex w-full items-center">
-    <p className="w-1/3">
-      You can copy this code and paste it in your codebase
-      currently we support only javascript and typescript 
-      either you can use our npm package or you can use our api directly
-
-       </p>
-    <pre className="w-full bg-[#f7fbfc] font-mono w-2/3 text-sm p-2 relative whitespace-pre-line" >
-             <Icons.clipboard className="absolute  right-2 cursor-pointer " onClick={() => {
-            navigator.clipboard.writeText(  `import {docuconvo} from 'docuconvo'
-
-            const docuconvo = docuconvo('${project?.docuconvo_key}')
-            const response = await docuconvo.ask('how to create a new project?')
-            console.log(response)
-            `);
-            toast({
-              title: 'Success!',
-              description: "copied to clipboard",
-              variant: 'default'
-            })
-          }} /> 
-      {`import {docuconvo} from 'docuconvo'
-
-const docuconvo = docuconvo('${project?.docuconvo_key}')
-const response = await docuconvo.ask('how to create a new project?')
-console.log(response)
-`}
-    </pre>
-  </div>
-</div>
-
-        </CardDescription>
-      </CardContent> */}
 <div className="mx-6 py-4">
   <div className="grid grid-cols-12 gap-4 2xl:gap-20">
     <div className="col-span-12 2xl:col-span-4">
@@ -136,22 +78,9 @@ console.log(response)
     <div className="col-span-12 2xl:col-span-8">
       <div className="relative">
         <div className="transition-opacity duration-300">
-          <div className="border-overlay undefined mb-8 overflow-hidden rounded-md border shadow-sm">
-            <div className="bg-surface-100 border-overlay">
-              <div className="flex items-center px-6 py-4">
-                <div className="space-y-3">
-                  <h5 className="text-base font-semibold">Project API</h5>
-                  <p className=" text-sm text-gray-700">
-                    Your API is secured behind an API gateway which requires an
-                    API Key for every request.
-                    <br />
-                    You can use the parameters below to use DocuConvo client
-                    libraries.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="bg-surface-100">
+          <div className="border-overlay undefined mb-8 overflow-hidden rounded-md border border-t-0 shadow-sm">
+
+            <div className="">
               <div className="border-panel-border-interior-light dark:border-panel-border-interior-dark border-t px-6 py-4">
                 <div className="input-mono grid gap-2 text-sm md:grid md:grid-cols-12">
                   <div className="col-span-4 flex flex-col space-y-2">
