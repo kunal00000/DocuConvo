@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from 'express'
+
 import { prisma } from '@docuconvo/database'
 
 export const queryAuth = async (

@@ -1,4 +1,4 @@
-import { DashboardConfig } from "types"
+import { DashboardConfig } from 'types'
 
 export const dashboardConfig: DashboardConfig = {
   mainNav: [
@@ -7,44 +7,43 @@ export const dashboardConfig: DashboardConfig = {
     //   href: "/docs",
     // },
     {
-      title: "Support",
-      href: "/support",
-      disabled: true,
-    },
+      title: 'Support',
+      href: '/support',
+      disabled: true
+    }
   ],
   sidebarNav: [
     {
-      title: "Panel",
-      href: "/dashboard",
-      icon: "post",
+      title: 'Panel',
+      href: '/dashboard',
+      icon: 'post'
     },
     {
-      title: "Billing",
-      href: "/dashboard/billing",
-      icon: "billing",
+      title: 'Billing',
+      href: '/dashboard/billing',
+      icon: 'billing'
     },
     {
-      title: "Settings",
-      href: "/dashboard/settings",
-      icon: "settings",
-    },
+      title: 'Settings',
+      href: '/dashboard/settings',
+      icon: 'settings'
+    }
   ],
   docsNav: [
     {
-      title: "overview",
-      href: "/",
-      icon: "post",
-
+      title: 'overview',
+      href: '/',
+      icon: 'post'
     },
     {
-      title: "usage",
-      href: "/usage",
-      icon: "billing",
+      title: 'usage',
+      href: '/usage',
+      icon: 'billing'
     },
     {
-      title: "setting",
-      href: "/setting",
-      icon: "settings",
-    },
-  ],
+      title: 'setting',
+      href: '/setting',
+      icon: 'settings'
+    }
+  ]
 }

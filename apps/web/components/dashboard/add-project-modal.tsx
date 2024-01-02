@@ -1,13 +1,15 @@
 'use client'
 
-import { Modal } from '@/components/shared/modal'
-import { useAddProjectModal } from '@/hooks/use-modal'
+import { useState } from 'react'
+
 import SideBar from '@/components/dashboard/form-side-bar'
 import WebsiteInfoForm from '@/components/dashboard/website-info-form'
-import PineconeInfo from './pinecone-form'
-import OpenAIForm from './openai-form'
+import { Modal } from '@/components/shared/modal'
+import { useAddProjectModal } from '@/hooks/use-modal'
 import { ProjectForm } from '@/lib/validations/add-project-form'
-import { useState } from 'react'
+
+import OpenAIForm from './openai-form'
+import PineconeInfo from './pinecone-form'
 
 export const AddProjectModal = () => {
   const initialValues: ProjectForm = {
@@ -41,7 +43,7 @@ export const AddProjectModal = () => {
 
   return (
     <Modal showModal={isOpen} setShowModal={onClose}>
-      <div className='flex justify-center w-full mx-auto pb-6'>
+      <div className='mx-auto flex w-full justify-center pb-6'>
         <SideBar currentStepIndex={currentStepIndex} goTo={goTo} />
       </div>
       <main className={'h-full'}>

@@ -1,6 +1,8 @@
-import { Request, Response } from 'express'
-import { runCrawl } from '../main'
 import dotenv from 'dotenv'
+import { Request, Response } from 'express'
+
+import { runCrawl } from '../main'
+
 dotenv.config()
 
 export async function crawlController(req: Request, res: Response) {

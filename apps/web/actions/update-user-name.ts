@@ -1,10 +1,12 @@
 'use server'
 
-import { authOptions } from '@/lib/auth'
-import { prisma } from '@docuconvo/database'
-import { userNameSchema } from '@/lib/validations/user'
-import { getServerSession } from 'next-auth'
 import { revalidatePath } from 'next/cache'
+
+import { getServerSession } from 'next-auth'
+
+import { authOptions } from '@/lib/auth'
+import { userNameSchema } from '@/lib/validations/user'
+import { prisma } from '@docuconvo/database'
 
 export type FormData = {
   name: string

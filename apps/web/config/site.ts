@@ -1,5 +1,6 @@
-import { env } from '@/env.mjs'
 import { SiteConfig } from 'types'
+
+import { env } from '@/env.mjs'
 
 const site_url = env.NEXT_PUBLIC_APP_URL
 

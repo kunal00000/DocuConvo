@@ -1,9 +1,10 @@
 'use server'
 
-import { prisma } from '@docuconvo/database'
 import { revalidatePath } from 'next/cache'
+
 import { getCurrentUser } from '@/lib/session'
 import { ProjectForm } from '@/lib/validations/add-project-form'
+import { prisma } from '@docuconvo/database'
 
 export async function createProject({
   project,

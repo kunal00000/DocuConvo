@@ -2,6 +2,7 @@
 
 import { SignInModal } from '@/components/layout/sign-in-modal'
 import { useMounted } from '@/hooks/use-mounted'
+
 import { AddProjectModal } from './dashboard/add-project-modal'
 
 export const ModalProvider = () => {

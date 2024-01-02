@@ -1,14 +1,16 @@
-"use client"
+'use client'
 
-import * as React from "react"
-import Link from "next/link"
-import { useSelectedLayoutSegment } from "next/navigation"
+import * as React from 'react'
 
-import { MainNavItem } from "types"
-import { siteConfig } from "@/config/site"
-import { cn } from "@/lib/utils"
-import { Icons } from "@/components/shared/icons"
-import { MobileNav } from "@/components/layout/mobile-nav"
+import Link from 'next/link'
+import { useSelectedLayoutSegment } from 'next/navigation'
+
+import { MainNavItem } from 'types'
+
+import { MobileNav } from '@/components/layout/mobile-nav'
+import { Icons } from '@/components/shared/icons'
+import { siteConfig } from '@/config/site'
+import { cn } from '@/lib/utils'
 
 interface MainNavProps {
   items?: MainNavItem[]
@@ -30,46 +32,44 @@ export function MainNav({ items, children }: MainNavProps) {
       }
     }
 
-    document.addEventListener("click", closeMobileMenuOnClickOutside)
+    document.addEventListener('click', closeMobileMenuOnClickOutside)
 
     return () => {
-      document.removeEventListener("click", closeMobileMenuOnClickOutside)
+      document.removeEventListener('click', closeMobileMenuOnClickOutside)
     }
   }, [showMobileMenu])
 
   return (
-    <div className="flex gap-6 md:gap-10">
-      <Link href="/" className="hidden items-center space-x-2 md:flex">
+    <div className='flex gap-6 md:gap-10'>
+      <Link href='/' className='hidden items-center space-x-2 md:flex'>
         <Icons.logo />
-        <span className="hidden font-urban text-xl font-bold sm:inline-block">
+        <span className='font-urban hidden text-xl font-bold sm:inline-block'>
           {siteConfig.name}
         </span>
       </Link>
       {items?.length ? (
-        <nav className="hidden gap-6 md:flex">
+        <nav className='hidden gap-6 md:flex'>
           {items?.map((item, index) => (
             <Link
               key={index}
-              href={item.disabled ? "#" : item.href}
+              href={item.disabled ? '#' : item.href}
               className={cn(
-                "flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm",
+                'hover:text-foreground/80 flex items-center text-lg font-medium transition-colors sm:text-sm',
                 item.href.startsWith(`/${segment}`)
-                  ? "text-foreground"
-                  : "text-foreground/60",
-                item.disabled && "cursor-not-allowed opacity-80"
-              )}
-            >
+                  ? 'text-foreground'
+                  : 'text-foreground/60',
+                item.disabled && 'cursor-not-allowed opacity-80'
+              )}>
               {item.title}
             </Link>
           ))}
         </nav>
       ) : null}
       <button
-        className="flex items-center space-x-2 md:hidden"
-        onClick={toggleMobileMenu}
-      >
+        className='flex items-center space-x-2 md:hidden'
+        onClick={toggleMobileMenu}>
         {showMobileMenu ? <Icons.close /> : <Icons.logo />}
-        <span className="font-bold">Menu</span>
+        <span className='font-bold'>Menu</span>
       </button>
       {showMobileMenu && items && (
         <MobileNav items={items}>{children}</MobileNav>

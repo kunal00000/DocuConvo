@@ -10,6 +10,7 @@ import {
   Tailwind,
   Text
 } from '@react-email/components'
+
 import { Icons } from '../components/shared/icons'
 
 type MagicLinkEmailProps = {
@@ -42,8 +43,7 @@ const MagicLinkEmail = ({
           <Section className='my-5 text-center'>
             <Button
               className='inline-block rounded-md bg-zinc-900 px-4 py-2 text-base text-white no-underline'
-              href={actionUrl}
-            >
+              href={actionUrl}>
               {mailType === 'login' ? 'Sign in' : 'Activate Account'}
             </Button>
           </Section>

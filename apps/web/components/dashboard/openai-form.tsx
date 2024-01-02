@@ -1,13 +1,16 @@
-import { openAiSchema } from '@/lib/validations/add-project-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { Label } from '@/components/ui/label'
-import { Input } from '@/components/ui/input'
+import { useState } from 'react'
+
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
-import NextBackButton from './next-back-button'
+
 import { createProject } from '@/actions/create-project'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 import { toast } from '@/components/ui/use-toast'
-import { useState } from 'react'
+import { openAiSchema } from '@/lib/validations/add-project-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+
+import NextBackButton from './next-back-button'
 
 type FormData = z.infer<typeof openAiSchema>
 
@@ -59,9 +62,8 @@ const OpenAIForm = ({
   return (
     <form
       onSubmit={handleSubmit(onSubmitForm)}
-      className='h-full flex flex-col justify-evenly'
-    >
-      <div className='grid gap-1 slide-in-left'>
+      className='flex h-full flex-col justify-evenly'>
+      <div className='slide-in-left grid gap-1'>
         <Label htmlFor='api-key'>API key</Label>
         <Input
           id='api-key'

@@ -1,8 +1,9 @@
-import { Pinecone } from '@pinecone-database/pinecone'
 import type { Request, Response } from 'express'
 import { HuggingFaceInferenceEmbeddings } from 'langchain/embeddings/hf'
 import { OpenAIEmbeddings } from 'langchain/embeddings/openai'
 import { PineconeStore } from 'langchain/vectorstores/pinecone'
+
+import { Pinecone } from '@pinecone-database/pinecone'
 
 export const searchQuery = async (req: Request, res: Response) => {
   const {

@@ -1,9 +1,8 @@
-import { pineconeInfoSchema } from '@/lib/validations/add-project-form'
-import { zodResolver } from '@hookform/resolvers/zod'
 import { Controller, useForm } from 'react-hook-form'
-import { Label } from '@/components/ui/label'
-import { Input } from '@/components/ui/input'
 import { z } from 'zod'
+
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 import {
   Select,
   SelectContent,
@@ -14,6 +13,9 @@ import {
   SelectValue
 } from '@/components/ui/select'
 import { useAddProjectModal } from '@/hooks/use-modal'
+import { pineconeInfoSchema } from '@/lib/validations/add-project-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+
 import NextBackButton from './next-back-button'
 
 type FormData = z.infer<typeof pineconeInfoSchema>
@@ -56,9 +58,8 @@ const PineconeInfo = ({
   return (
     <form
       onSubmit={handleSubmit(onSubmitForm)}
-      className='h-full flex flex-col justify-evenly'
-    >
-      <div className='grid gap-5 slide-in-left'>
+      className='flex h-full flex-col justify-evenly'>
+      <div className='slide-in-left grid gap-5'>
         <div className='grid gap-1'>
           <Label htmlFor='name'>Index Name</Label>
           <Input
@@ -100,8 +101,7 @@ const PineconeInfo = ({
                   </SelectContent>
                 </Select>
               )
-            }}
-          ></Controller>
+            }}></Controller>
           {errors?.pinecone_environment && (
             <p className='px-1 text-xs text-red-600'>
               {errors.pinecone_environment.message}

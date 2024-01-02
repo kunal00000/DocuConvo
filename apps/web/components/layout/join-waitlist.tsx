@@ -1,7 +1,7 @@
 'use client'
 
-import { useSigninModal } from '@/hooks/use-modal'
 import { Button } from '@/components/ui/button'
+import { useSigninModal } from '@/hooks/use-modal'
 
 export default function JoinWaitlist() {
   const signInModal = useSigninModal()

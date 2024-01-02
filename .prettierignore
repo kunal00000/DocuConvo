@@ -1,0 +1,9 @@
+**/*node_modules
+*/*.next
+*.gitignore
+*.DS_Store
+*.json
+**/*.css
+**/*dist
+**/*build
+.github

@@ -1,7 +1,8 @@
 'use client'
 
-import Link from 'next/link'
 import { Suspense, useState } from 'react'
+
+import Link from 'next/link'
 
 import { BillingFormButton } from '@/components/forms/billing-form-button'
 import { Icons } from '@/components/shared/icons'
@@ -31,7 +32,7 @@ export function PricingCards({ userId, subscriptionPlan }: PricingCardsProps) {
   return (
     <section className='container flex flex-col items-center text-center'>
       <div className='mx-auto mb-10 flex w-full flex-col gap-5'>
-        <p className='text-sm font-medium uppercase tracking-widest text-muted-foreground'>
+        <p className='text-muted-foreground text-sm font-medium uppercase tracking-widest'>
           Pricing
         </p>
         <h2 className='font-heading text-3xl leading-[1.1] md:text-5xl'>
@@ -54,10 +55,9 @@ export function PricingCards({ userId, subscriptionPlan }: PricingCardsProps) {
         {pricingData.map((offer) => (
           <div
             className='relative flex flex-col overflow-hidden rounded-xl border'
-            key={offer.title}
-          >
-            <div className='min-h-[150px] items-start space-y-4 bg-secondary/70 p-6'>
-              <p className='flex font-urban text-sm font-bold uppercase tracking-wider text-muted-foreground'>
+            key={offer.title}>
+            <div className='bg-secondary/70 min-h-[150px] items-start space-y-4 p-6'>
+              <p className='font-urban text-muted-foreground flex text-sm font-bold uppercase tracking-wider'>
                 {offer.title}
               </p>
 
@@ -66,7 +66,7 @@ export function PricingCards({ userId, subscriptionPlan }: PricingCardsProps) {
                   <div className='flex text-left text-3xl font-semibold leading-6'>
                     {isYearly && offer.prices.monthly > 0 ? (
                       <>
-                        <span className='mr-2 text-muted-foreground line-through'>
+                        <span className='text-muted-foreground mr-2 line-through'>
                           ${offer.prices.monthly}
                         </span>
                         <span>${offer.prices.yearly / 12}</span>
@@ -81,7 +81,7 @@ export function PricingCards({ userId, subscriptionPlan }: PricingCardsProps) {
                 </div>
               </div>
               {offer.prices.monthly > 0 ? (
-                <div className='text-left text-sm text-muted-foreground'>
+                <div className='text-muted-foreground text-left text-sm'>
                   {isYearly
                     ? `$${offer.prices.yearly} will be charged when annual`
                     : 'when charged monthly'}
@@ -101,9 +101,8 @@ export function PricingCards({ userId, subscriptionPlan }: PricingCardsProps) {
                 {offer.limitations.length > 0 &&
                   offer.limitations.map((feature) => (
                     <li
-                      className='flex items-start text-muted-foreground'
-                      key={feature}
-                    >
+                      className='text-muted-foreground flex items-start'
+                      key={feature}>
                       <Icons.close className='mr-3 size-5 shrink-0' />
                       <p>{feature}</p>
                     </li>
@@ -117,8 +116,7 @@ export function PricingCards({ userId, subscriptionPlan }: PricingCardsProps) {
                     className={buttonVariants({
                       className: 'w-full',
                       variant: 'default'
-                    })}
-                  >
+                    })}>
                     Go to dashboard
                   </Link>
                 ) : (
@@ -136,12 +134,11 @@ export function PricingCards({ userId, subscriptionPlan }: PricingCardsProps) {
         ))}
       </div>
 
-      <p className='mt-3 text-balance text-center text-base text-muted-foreground'>
+      <p className='text-muted-foreground mt-3 text-balance text-center text-base'>
         Email{' '}
         <a
-          className='font-medium text-primary hover:underline'
-          href='mailto:docuconvo@gmail.com'
-        >
+          className='text-primary font-medium hover:underline'
+          href='mailto:docuconvo@gmail.com'>
           docuconvo@gmail.com
         </a>{' '}
         for to contact our support team.

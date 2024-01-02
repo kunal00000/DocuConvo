@@ -1,5 +1,3 @@
-import '@/styles/globals.css'
-
 import { fontHeading, fontSans, fontUrban } from '@/assets/fonts'
 import { Analytics } from '@/components/analytics'
 import { ModalProvider } from '@/components/modal-provider'
@@ -8,6 +6,7 @@ import { TailwindIndicator } from '@/components/tailwind-indicator'
 import { Toaster } from '@/components/ui/toaster'
 import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
+import '@/styles/globals.css'
 
 interface RootLayoutProps {
   children: React.ReactNode
@@ -66,18 +65,16 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <head />
       <body
         className={cn(
-          'min-h-screen bg-background font-sans antialiased',
+          'bg-background min-h-screen font-sans antialiased',
           fontSans.variable,
           fontUrban.variable,
           fontHeading.variable
-        )}
-      >
+        )}>
         <ThemeProvider
           attribute='class'
           defaultTheme='system'
           enableSystem
-          disableTransitionOnChange
-        >
+          disableTransitionOnChange>
           {children}
           <Analytics />
           <Toaster />

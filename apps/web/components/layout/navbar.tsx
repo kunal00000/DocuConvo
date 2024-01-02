@@ -1,15 +1,18 @@
 'use client'
 
-import useScroll from '@/hooks/use-scroll'
-import { MainNavItem } from '@/types'
-import { User } from 'next-auth'
-import { MainNav } from './main-nav'
-import { UserAccountNav } from './user-account-nav'
-import { Button, buttonVariants } from '@/components/ui/button'
 import Link from 'next/link'
-import { cn } from '@/lib/utils'
+
+import { User } from 'next-auth'
+
+import { Button, buttonVariants } from '@/components/ui/button'
 import { useSigninModal } from '@/hooks/use-modal'
+import useScroll from '@/hooks/use-scroll'
+import { cn } from '@/lib/utils'
+import { MainNavItem } from '@/types'
+
+import { MainNav } from './main-nav'
 import { ModeToggle } from './mode-toggle'
+import { UserAccountNav } from './user-account-nav'
 
 interface NavBarProps {
   user: Pick<User, 'name' | 'image' | 'email'> | undefined
@@ -31,10 +34,9 @@ export function NavBar({
 
   return (
     <header
-      className={`sticky top-0 z-40 flex w-full justify-center bg-background/60 backdrop-blur-xl transition-all ${
+      className={`bg-background/60 sticky top-0 z-40 flex w-full justify-center backdrop-blur-xl transition-all ${
         scroll ? (scrolled ? 'border-b' : 'bg-background/0') : 'border-b'
-      }`}
-    >
+      }`}>
       <div className='container flex h-16 items-center justify-between py-4'>
         <MainNav items={items}>{children}</MainNav>
 
@@ -45,8 +47,9 @@ export function NavBar({
           {!user ? (
             <Link
               href='/login'
-              className={cn(buttonVariants({ variant: 'outline', size: 'sm' }))}
-            >
+              className={cn(
+                buttonVariants({ variant: 'outline', size: 'sm' })
+              )}>
               Login Page
             </Link>
           ) : null}
@@ -58,8 +61,7 @@ export function NavBar({
               className='px-3'
               variant='default'
               size='sm'
-              onClick={signInModal.onOpen}
-            >
+              onClick={signInModal.onOpen}>
               Sign In
             </Button>
           )}

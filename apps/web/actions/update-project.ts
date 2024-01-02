@@ -1,32 +1,34 @@
 'use server'
 
-import { authOptions } from '@/lib/auth'
-import { prisma } from '@docuconvo/database'
-import { projectFormSchema } from "@/lib/validations/project"
-import { getServerSession } from 'next-auth'
 import { revalidatePath } from 'next/cache'
+
 import { da } from 'date-fns/locale'
+import { getServerSession } from 'next-auth'
+
+import { authOptions } from '@/lib/auth'
+import { projectFormSchema } from '@/lib/validations/project'
+import { prisma } from '@docuconvo/database'
 
 export type FormData = {
-    id: string,
-    projectName: string,
-    websiteUrl  : string,
-    match : string,
-    cssSelector: string,
-    pinecone_ApiKey: string,
-    pinecone_environment: string,
-    pinecone_indexName: string,
-    openai_ApiKey: string
+  id: string
+  projectName: string
+  websiteUrl: string
+  match: string
+  cssSelector: string
+  pinecone_ApiKey: string
+  pinecone_environment: string
+  pinecone_indexName: string
+  openai_ApiKey: string
 }
 
-export async function updateProject( data: FormData) {
+export async function updateProject(data: FormData) {
   try {
     const session = await getServerSession(authOptions)
 
     if (!session?.user) {
       throw new Error('Unauthorized')
     }
-console.log(data)
+    console.log(data)
 
     // Update the user name.
     await prisma.project.update({
