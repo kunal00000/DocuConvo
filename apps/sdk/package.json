@@ -1,14 +1,28 @@
 {
   "name": "docuconvo",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.6",
+  "description": "Don't just read through docs. Converse with them.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "tsc & node ./dist/client.js",
     "build": "tsc"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kunal00000/DocuConvo.git"
+  },
+  "keywords": [
+    "docuconvo",
+    "docuconvo-client",
+    "docuconvo-sdk",
+    "documentation"
+  ],
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "license": "AGPL-3.0",
   "devDependencies": {
     "@types/node": "^20.10.5",
     "typescript": "^5.3.3"

@@ -1,8 +1,9 @@
 import { HuggingFaceInferenceEmbeddings } from 'langchain/embeddings/hf'
 import { PineconeStore } from 'langchain/vectorstores/pinecone'
 
-import { DocMetadata } from '../types/docs'
 import { Index, Pinecone, RecordMetadata } from '@pinecone-database/pinecone'
+
+import { DocMetadata } from '../types/docs'
 
 // TODO: handle when vector store is not pinecone
 // TODO: handle when embeddings are stored already

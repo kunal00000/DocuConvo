@@ -1,8 +1,11 @@
-import { Resend } from 'resend'
 import * as React from 'react'
+
+import { NextResponse } from 'next/server'
+
+import { Resend } from 'resend'
+
 import DocuConvoWelcomeEmail from '@/emails/welcome-email'
 import { prisma } from '@docuconvo/database'
-import { NextResponse } from 'next/server'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 

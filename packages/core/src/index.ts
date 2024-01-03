@@ -1,8 +1,9 @@
 import cors from 'cors'
 import express from 'express'
-import queryRouter from './routes/query.routes'
-import crawlRouter from './routes/crawl.routes'
+
 import { queryAuth } from './middlewares/auth.middleware'
+import crawlRouter from './routes/crawl.routes'
+import queryRouter from './routes/query.routes'
 
 const app = express()
 const PORT = process.env.PORT || 3000

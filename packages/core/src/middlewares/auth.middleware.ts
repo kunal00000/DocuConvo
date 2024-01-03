@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from 'express'
+
 import { prisma } from '@docuconvo/database'
 
 export const queryAuth = async (
@@ -23,7 +24,7 @@ export const queryAuth = async (
         return res.status(404).json({
           error: {
             message:
-              'No project found. Try creating a project first at https://docuconvo.com/dashboard',
+              'No docuconvo project found. Try creating a project first at https://docuconvo.com/dashboard',
             type: 'PROJECT_NOT_FOUND'
           }
         })
@@ -39,10 +40,9 @@ export const queryAuth = async (
 
       next()
     } catch (error) {
-      console.log(error)
       return res.status(401).json({
         error: {
-          message: 'Authentication failed',
+          message: 'Authentication failed for docuconvo',
           type: 'AUTH_FAILED'
         }
       })
@@ -50,7 +50,7 @@ export const queryAuth = async (
   } else {
     return res.status(401).json({
       error: {
-        message: 'No API key provided',
+        message: 'No docuconvo key provided',
         type: 'MISSING_API_KEY'
       }
     })

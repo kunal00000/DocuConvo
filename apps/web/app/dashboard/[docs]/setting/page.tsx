@@ -1,17 +1,15 @@
-import { DashboardHeader } from "@/components/dashboard/header"
-import { prisma } from "@docuconvo/database"
-import { cn } from "@/lib/utils"
-import { Icons } from "@/components/shared/icons"
-import Link from "next/link"
-import { dashboardConfig } from "@/config/dashboard"
-import { DashboardShell } from "@/components/dashboard/shell"
-import { Button } from "@/components/ui/button"
+import Link from 'next/link'
 
-import { Card, CardContent } from "@/components/ui/card"
-import { ProjectSettingForm } from "@/components/dashboard/project-dashboard"
-import {DocsHeader} from "@/components/dashboard/docs-header"
-
-
+import { DocsHeader } from '@/components/dashboard/docs-header'
+import { DashboardHeader } from '@/components/dashboard/header'
+import { ProjectSettingForm } from '@/components/dashboard/project-dashboard'
+import { DashboardShell } from '@/components/dashboard/shell'
+import { Icons } from '@/components/shared/icons'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
+import { dashboardConfig } from '@/config/dashboard'
+import { cn } from '@/lib/utils'
+import { prisma } from '@docuconvo/database'
 
 export default async function Page({ params }) {
   const project = await prisma.project.findFirst({
@@ -21,9 +19,10 @@ export default async function Page({ params }) {
   })
   const items = dashboardConfig.docsNav
 
-  
-    return <DashboardShell>
-    <DocsHeader project={project} items={items}/>
-<ProjectSettingForm project={project}/>
-      </DashboardShell>
-  }
+  return (
+    <DashboardShell>
+      <DocsHeader project={project} items={items} />
+      <ProjectSettingForm project={project} />
+    </DashboardShell>
+  )
+}

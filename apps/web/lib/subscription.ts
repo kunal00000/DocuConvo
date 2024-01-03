@@ -1,9 +1,10 @@
 // @ts-nocheck
 // TODO: Fix this when we turn strict mode on.
-import { pricingData } from '@/config/subscriptions'
-import { prisma } from '@docuconvo/database'
-import { stripe } from '@/lib/stripe'
 import { UserSubscriptionPlan } from 'types'
+
+import { pricingData } from '@/config/subscriptions'
+import { stripe } from '@/lib/stripe'
+import { prisma } from '@docuconvo/database'
 
 export async function getUserSubscriptionPlan(
   userId: string

@@ -1,6 +1,5 @@
-import { ImageResponse } from '@vercel/og'
-
 import { ogImageSchema } from '@/lib/validations/og'
+import { ImageResponse } from '@vercel/og'
 
 export const runtime = 'edge'
 
@@ -41,8 +40,7 @@ export async function GET(req: Request) {
               mode === 'dark'
                 ? 'linear-gradient(90deg, #000 0%, #111 100%)'
                 : 'white'
-          }}
-        >
+          }}>
           <div
             tw='text-5xl'
             style={{
@@ -52,8 +50,7 @@ export async function GET(req: Request) {
               background: 'linear-gradient(90deg, #6366f1, #a855f7 80%)',
               backgroundClip: 'text',
               color: 'transparent'
-            }}
-          >
+            }}>
             SaaS Starter
           </div>
 
@@ -61,8 +58,7 @@ export async function GET(req: Request) {
             {/* Type : Blog or Doc */}
             <div
               tw='flex text-xl uppercase font-bold tracking-tight'
-              style={{ fontFamily: 'Inter', fontWeight: 'normal' }}
-            >
+              style={{ fontFamily: 'Inter', fontWeight: 'normal' }}>
               {values.type}
             </div>
             {/* Title */}
@@ -73,8 +69,7 @@ export async function GET(req: Request) {
                 fontWeight: 'bold',
                 marginLeft: '-3px',
                 fontSize
-              }}
-            >
+              }}>
               {heading}
             </div>
           </div>
@@ -82,8 +77,7 @@ export async function GET(req: Request) {
           <div tw='flex items-center w-full justify-between'>
             <div
               tw='flex items-center text-xl'
-              style={{ fontFamily: 'Inter', fontWeight: 'normal' }}
-            >
+              style={{ fontFamily: 'Inter', fontWeight: 'normal' }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 alt='avatar'
@@ -104,8 +98,7 @@ export async function GET(req: Request) {
 
             <div
               tw='flex items-center text-xl'
-              style={{ fontFamily: 'Inter', fontWeight: 'normal' }}
-            >
+              style={{ fontFamily: 'Inter', fontWeight: 'normal' }}>
               <svg width='32' height='32' viewBox='0 0 48 48' fill='none'>
                 <path
                   d='M30 44v-8a9.6 9.6 0 0 0-2-7c6 0 12-4 12-11 .16-2.5-.54-4.96-2-7 .56-2.3.56-4.7 0-7 0 0-2 0-6 3-5.28-1-10.72-1-16 0-4-3-6-3-6-3-.6 2.3-.6 4.7 0 7a10.806 10.806 0 0 0-2 7c0 7 6 11 12 11a9.43 9.43 0 0 0-1.7 3.3c-.34 1.2-.44 2.46-.3 3.7v8'

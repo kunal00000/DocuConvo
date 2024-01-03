@@ -1,12 +1,13 @@
 'use client'
 
-import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
-import { Label } from '@/components/ui/label'
+
 import { Input } from '@/components/ui/input'
-import { websiteInfoSchema } from '@/lib/validations/add-project-form'
+import { Label } from '@/components/ui/label'
 import { useAddProjectModal } from '@/hooks/use-modal'
+import { websiteInfoSchema } from '@/lib/validations/add-project-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 
 import NextBackButton from './next-back-button'
 
@@ -37,9 +38,8 @@ const WebsiteInfoForm = ({
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className='h-full flex flex-col justify-evenly'
-    >
-      <div className='grid gap-5 slide-in-left'>
+      className='flex h-full flex-col justify-evenly'>
+      <div className='slide-in-left grid gap-5'>
         <div className='grid gap-1'>
           <Label htmlFor='projectName'>Project name</Label>
           <Input

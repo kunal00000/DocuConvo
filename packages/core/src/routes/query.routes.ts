@@ -1,4 +1,5 @@
 import express from 'express'
+
 import { searchQuery } from '../controllers/query.controllers'
 
 const router = express.Router()

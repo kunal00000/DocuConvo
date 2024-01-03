@@ -1,13 +1,15 @@
+'use client'
 
-"use client"
-import { DashboardHeader } from "@/components/dashboard/header"
-import { cn } from "@/lib/utils"
-import { Icons } from "@/components/shared/icons"
-import Link from "next/link"
-import { Card, CardContent } from "@/components/ui/card"
+import Link from 'next/link'
 
-export function DocsHeader({project, items}) {
+import { DashboardHeader } from '@/components/dashboard/header'
+import { Icons } from '@/components/shared/icons'
+import { Card, CardContent } from '@/components/ui/card'
+import { cn } from '@/lib/utils'
+
+export function DocsHeader({ project, items }) {
   return (
+
     <div className="">
             <DashboardHeader heading={project!.name} text={project?.websiteUrl}>
       </DashboardHeader>
@@ -19,13 +21,12 @@ export function DocsHeader({project, items}) {
         return (
           item.href && (
             <Link key={index} href={item.disabled ? "/" :"/dashboard/"+ project?.id+ item.href}>
-              <span
-                className={cn(
-                  "group flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground",
-                  "path" === item.href ? "bg-accent" : "transparent",
-                  item.disabled && "cursor-not-allowed opacity-80"
-                )}
-              >
+             <span
+                      className={cn(
+                        'hover:bg-accent hover:text-accent-foreground group flex items-center rounded-md px-3 py-2 text-sm font-medium',
+                        'path' === item.href ? 'bg-accent' : 'transparent',
+                        item.disabled && 'cursor-not-allowed opacity-80'
+                      )}>
                 <Icon className="mr-2 size-4" />
                 <span>{item.title}</span>
               </span>
@@ -36,6 +37,7 @@ export function DocsHeader({project, items}) {
     </nav>
 </CardContent>
         </Card>
+
     </div>
   )
 }

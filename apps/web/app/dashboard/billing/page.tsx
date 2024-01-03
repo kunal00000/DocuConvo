@@ -1,13 +1,13 @@
 import { redirect } from 'next/navigation'
 
+import { BillingInfo } from '@/components/billing-info'
+import { DashboardHeader } from '@/components/dashboard/header'
+import { DashboardShell } from '@/components/dashboard/shell'
+import { Icons } from '@/components/shared/icons'
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { authOptions } from '@/lib/auth'
 import { getCurrentUser } from '@/lib/session'
 import { getUserSubscriptionPlan } from '@/lib/subscription'
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
-import { BillingInfo } from '@/components/billing-info'
-import { DashboardHeader } from '@/components/dashboard/header'
-import { Icons } from '@/components/shared/icons'
-import { DashboardShell } from '@/components/dashboard/shell'
 
 export const metadata = {
   title: 'Billing',
@@ -40,8 +40,7 @@ export default async function BillingPage() {
               href='https://stripe.com/docs/testing#cards'
               target='_blank'
               rel='noreferrer'
-              className='font-medium underline underline-offset-8'
-            >
+              className='font-medium underline underline-offset-8'>
               Stripe docs
             </a>
             .

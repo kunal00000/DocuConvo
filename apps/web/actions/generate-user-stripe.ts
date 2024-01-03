@@ -68,4 +68,5 @@ export async function generateUserStripe(priceId: string): Promise<responseActio
   redirect(redirectUrl)
 }
 
-   */}
+   */
+}
