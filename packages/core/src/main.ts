@@ -2,6 +2,7 @@ import { PlaywrightCrawler } from 'crawlee'
 
 import { generateEmbeddings } from './lib/generate-embeddings'
 import { DocMetadata } from './types/docs'
+import { crawlQueue } from './controllers/addtoQueue.controllers'
 
 export async function runCrawl(
   websiteUrl: string,
@@ -57,7 +58,14 @@ export async function runCrawl(
   })
 
   try {
-    await crawler.run([websiteUrl])
+
+    crawlQueue.process(async (job, done) => {
+      // TODO: add website url from job data, job data has the bunch of info we passed in queue route
+      console.log(job.data)
+      await crawler.run([websiteUrl])
+      done()
+    })
+
 
     await crawler.requestQueue?.drop()
 
