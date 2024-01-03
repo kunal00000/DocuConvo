@@ -11,7 +11,7 @@ interface singleDocsItem {
 
 export function DocsLists({ userProjects }) {
   return (
-    <div className='animate-in fade-in-50 flex  min-h-[400px] flex-col rounded-md border border-dashed p-8 text-center'>
+    <div className='flex min-h-[400px] flex-col  rounded-md border border-dashed p-8 text-center animate-in fade-in-50'>
       <div className=' flex w-full flex-wrap gap-5  '>
         {userProjects.map((item: singleDocsItem) => (
           <Link href={'/dashboard/' + item.id} key={item.id}>

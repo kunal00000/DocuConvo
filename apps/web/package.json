@@ -8,6 +8,7 @@
     "turbo": "next dev --turbo",
     "start": "next start",
     "lint": "next lint",
+    "lint:fix": "next lint --fix",
     "preview": "next build && next start",
     "email": "email dev --dir emails --port 3333"
   },

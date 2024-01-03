@@ -18,7 +18,7 @@ export default async function IndexPage() {
 
         <div className='container flex max-w-[64rem] flex-col items-center gap-5 text-center '>
           <h1
-            className='animate-fade-up font-urban text-balance text-4xl font-extrabold tracking-tight opacity-0 sm:text-5xl md:text-6xl lg:text-7xl'
+            className='animate-fade-up text-balance font-urban text-4xl font-extrabold tracking-tight opacity-0 sm:text-5xl md:text-6xl lg:text-7xl'
             style={{ animationDelay: '0.25s', animationFillMode: 'forwards' }}>
             Make Documentation{' '}
             <span className='text-gradient_indigo-purple font-extrabold'>
@@ -27,7 +27,7 @@ export default async function IndexPage() {
           </h1>
 
           <div
-            className='animate-fade-up flex justify-center space-x-2 opacity-0 md:space-x-4'
+            className='flex animate-fade-up justify-center space-x-2 opacity-0 md:space-x-4'
             style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
             <JoinWaitlist />
             <Link

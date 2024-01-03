@@ -15,7 +15,7 @@ const SideBar = ({ currentStepIndex, goTo }: NavProps) => {
         Website
       </Button>
       <Button
-        className='h-8 cursor-pointer rounded-l-none rounded-r-none'
+        className='h-8 cursor-pointer rounded-none'
         // onClick={() => goTo(1)}
         variant={currentStepIndex === 1 ? 'default' : 'outline'}>
         Pinecone
