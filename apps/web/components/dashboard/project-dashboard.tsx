@@ -5,7 +5,6 @@ import { useTransition } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { updateProject, type FormData } from '@/actions/update-project'
-import { Icons } from '@/components/shared/icons'
 import { buttonVariants } from '@/components/ui/button'
 import {
   Card,
