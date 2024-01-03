@@ -1,11 +1,11 @@
 'use client'
 
-import { useTransition } from 'react'
+import { useState } from 'react'
 
 import { useForm } from 'react-hook-form'
 
 import { updateProject, type FormData } from '@/actions/update-project'
-import { buttonVariants } from '@/components/ui/button'
+import { Button } from '@/components/ui/button'
 import {
   Card,
   CardContent,
@@ -17,17 +17,18 @@ import {
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { toast } from '@/components/ui/use-toast'
-import { cn } from '@/lib/utils'
 import { projectFormSchema } from '@/lib/validations/project'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Project } from '@prisma/client'
+
+import { Icons } from '../shared/icons'
 
 interface ProjectFormProps {
   project: Project
 }
 
 export function ProjectSettingForm({ project }: ProjectFormProps) {
-  const [isPending, startTransition] = useTransition()
+  const [isLoading, setIsLoading] = useState(false)
 
   const {
     handleSubmit,
@@ -49,21 +50,21 @@ export function ProjectSettingForm({ project }: ProjectFormProps) {
   })
 
   const onSubmitForm = async (data: FormData) => {
-    startTransition(async () => {
-      const { status } = await updateProject(data)
+    setIsLoading(true)
+    const { status } = await updateProject(data)
 
-      if (status !== 'success') {
-        toast({
-          title: 'Something went wrong.',
-          description: 'Your data was not updated. Please try again.',
-          variant: 'destructive'
-        })
-      } else {
-        toast({
-          description: 'Your data has been updated.'
-        })
-      }
-    })
+    setIsLoading(false)
+    if (status !== 'success') {
+      toast({
+        title: 'Something went wrong.',
+        description: 'Your data was not updated. Please try again.',
+        variant: 'destructive'
+      })
+    } else {
+      toast({
+        description: 'Your data has been updated.'
+      })
+    }
   }
   return (
     <form onSubmit={handleSubmit(onSubmitForm)}>
@@ -171,9 +172,16 @@ export function ProjectSettingForm({ project }: ProjectFormProps) {
           </div>
         </CardContent>
         <CardFooter>
-          <button type='submit' className={cn(buttonVariants())}>
-            <span>Save</span>
-          </button>
+          <Button disabled={isLoading}>
+            {isLoading ? (
+              <>
+                <Icons.spinner className='mr-2 size-4 animate-spin' />
+                <span>Saving</span>
+              </>
+            ) : (
+              <span>Save</span>
+            )}
+          </Button>
         </CardFooter>
       </Card>
     </form>

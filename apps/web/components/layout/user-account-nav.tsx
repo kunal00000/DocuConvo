@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 
-import { CreditCard, LayoutDashboard, LogOut, Settings } from 'lucide-react'
+import { LayoutDashboard, LogOut, Settings } from 'lucide-react'
 import type { User } from 'next-auth'
 import { signOut } from 'next-auth/react'
 
@@ -44,14 +44,6 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
           <Link href='/dashboard' className='flex items-center space-x-2.5'>
             <LayoutDashboard className='size-4' />
             <p className='text-sm'>Dashboard</p>
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem asChild>
-          <Link
-            href='/dashboard/billing'
-            className='flex items-center space-x-2.5'>
-            <CreditCard className='size-4' />
-            <p className='text-sm'>Billing</p>
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>

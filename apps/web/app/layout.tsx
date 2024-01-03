@@ -26,8 +26,7 @@ export const metadata = {
     'Auth.js',
     'shadcn ui',
     'Resend',
-    'React Email',
-    'Stripe'
+    'React Email'
   ],
   authors: [
     {

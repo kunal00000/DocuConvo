@@ -4,7 +4,6 @@ import {
   Check,
   ChevronLeft,
   ChevronRight,
-  CreditCard,
   File,
   FileText,
   HelpCircle,
@@ -30,7 +29,6 @@ export type Icon = LucideIcon
 export const Icons = {
   add: Plus,
   arrowRight: ArrowRight,
-  billing: CreditCard,
   chevronLeft: ChevronLeft,
   chevronRight: ChevronRight,
   check: Check,

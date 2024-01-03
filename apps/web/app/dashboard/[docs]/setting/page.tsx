@@ -15,7 +15,7 @@ export default async function Page({ params }) {
   return (
     <DashboardShell>
       <DocsHeader project={project} items={items} />
-      <ProjectSettingForm project={project} />
+      {project ? <ProjectSettingForm project={project} /> : 'null'}
     </DashboardShell>
   )
 }

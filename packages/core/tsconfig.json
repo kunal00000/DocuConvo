@@ -6,7 +6,8 @@
     "outDir": "dist",
     "noImplicitReturns": false,
     "noUnusedLocals": false,
-    "lib": ["DOM"]
+    "skipLibCheck": true,
+    "lib": ["DOM"],
   },
   "include": ["./src/**/*"]
 }

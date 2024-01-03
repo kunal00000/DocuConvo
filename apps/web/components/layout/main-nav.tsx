@@ -26,7 +26,7 @@ export function MainNav({ items, children }: MainNavProps) {
   }
 
   React.useEffect(() => {
-    const closeMobileMenuOnClickOutside = (event: MouseEvent) => {
+    const closeMobileMenuOnClickOutside = () => {
       if (showMobileMenu) {
         setShowMobileMenu(false)
       }
