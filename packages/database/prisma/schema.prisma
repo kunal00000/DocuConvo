@@ -3,9 +3,8 @@ generator client {
 }
 
 datasource db {
-  provider     = "postgresql"
-  url          = env("DATABASE_URL")
-  relationMode = "prisma"
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model Session {
@@ -16,27 +15,25 @@ model Session {
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
-  @@map(name: "sessions")
+  @@map("sessions")
 }
 
 model User {
-  id            String    @id @default(cuid())
-  name          String?
-  email         String?   @unique
-  emailVerified DateTime?
-  image         String?
-  createdAt     DateTime  @default(now()) @map(name: "created_at")
-  updatedAt     DateTime  @default(now()) @map(name: "updated_at")
+  id                     String    @id @default(cuid())
+  name                   String?
+  email                  String?   @unique
+  emailVerified          DateTime?
+  image                  String?
+  createdAt              DateTime  @default(now()) @map("created_at")
+  updatedAt              DateTime  @default(now()) @map("updated_at")
+  stripeCustomerId       String?   @unique @map("stripe_customer_id")
+  stripeSubscriptionId   String?   @unique @map("stripe_subscription_id")
+  stripePriceId          String?   @map("stripe_price_id")
+  stripeCurrentPeriodEnd DateTime? @map("stripe_current_period_end")
+  projects               Project[]
+  sessions               Session[]
 
-  projects Project[]
-  sessions Session[]
-
-  stripeCustomerId       String?   @unique @map(name: "stripe_customer_id")
-  stripeSubscriptionId   String?   @unique @map(name: "stripe_subscription_id")
-  stripePriceId          String?   @map(name: "stripe_price_id")
-  stripeCurrentPeriodEnd DateTime? @map(name: "stripe_current_period_end")
-
-  @@map(name: "users")
+  @@map("users")
 }
 
 model VerificationToken {
@@ -45,7 +42,37 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
-  @@map(name: "verification_tokens")
+  @@map("verification_tokens")
+}
+
+model Project {
+  id                      String         @id @unique @default(cuid())
+  docuconvo_key           String?        @unique
+  name                    String
+  websiteUrl              String         @map("website_url")
+  match                   String
+  cssSelector             String         @map("css_selector")
+  maxPageToCrawl          Int?           @map("max_page_to_crawl")
+  numberOfRequests        Int?
+  numberOfArticlesCrawled Int?
+  pineconeApiKey          String?        @map("pinecone_api_key")
+  pineconeIndexName       String?        @map("pinecone_indexName")
+  pineconeEnvironment     String?        @map("pinecone_environment")
+  openaiApiKey            String?        @map("openai_api_key")
+  status                  ProjectStatus? @default(pinecone)
+  createdAt               DateTime       @default(now()) @map("created_at")
+  updatedAt               DateTime       @default(now()) @map("updated_at")
+  creatorId               String?
+  Creator                 User?          @relation(fields: [creatorId], references: [id])
+
+  @@index([id, creatorId])
+  @@map("projects")
+}
+
+model userwaitlist {
+  id       String @id @default(cuid())
+  email    String @unique
+  username String
 }
 
 enum ProjectStatus {
@@ -53,42 +80,4 @@ enum ProjectStatus {
   pinecone
   openai
   embedding
-}
-
-model Project {
-  id                      String  @id @default(cuid()) @unique
-  docuconvo_key           String? @unique
-  name                    String
-  websiteUrl              String  @map(name: "website_url")
-  match                   String
-  cssSelector             String  @map(name: "css_selector")
-  maxPageToCrawl          Int?    @map(name: "max_page_to_crawl")
-  numberOfRequests        Int?
-  numberOfArticlesCrawled Int?
-
-  //pinecone
-  pineconeApiKey      String? @map("pinecone_api_key")
-  pineconeIndexName   String? @map("pinecone_indexName")
-  pineconeEnvironment String? @map("pinecone_environment")
-
-  //openai
-  openaiApiKey String? @map("openai_api_key")
-
-  //status
-  status ProjectStatus? @default(pinecone)
-
-  createdAt DateTime @default(now()) @map(name: "created_at")
-  updatedAt DateTime @default(now()) @map(name: "updated_at")
-
-  Creator   User?   @relation(fields: [creatorId], references: [id])
-  creatorId String?
-
-  @@index([id, creatorId])
-  @@map(name: "projects")
-}
-
-model userwaitlist {
-  id       String @id @default(cuid())
-  email    String @unique
-  username String
 }
