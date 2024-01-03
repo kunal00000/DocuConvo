@@ -1,5 +1,4 @@
 import {
-  AlertTriangle,
   ArrowRight,
   Check,
   ChevronLeft,
@@ -94,6 +93,5 @@ export const Icons = {
       />
     </svg>
   ),
-  user: User,
-  warning: AlertTriangle
+  user: User
 }
