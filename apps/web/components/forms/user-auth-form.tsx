@@ -46,7 +46,6 @@ export function UserAuthForm({ className, type, ...props }: UserAuthFormProps) {
 
     setIsLoading(false)
 
-    // TODO: replace shadcn toast by react-hot-toast
     if (!signInResult?.ok) {
       return toast({
         title: 'Something went wrong.',

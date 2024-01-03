@@ -28,7 +28,6 @@ export async function updateProject(data: FormData) {
     if (!session?.user) {
       throw new Error('Unauthorized')
     }
-    console.log(data)
 
     // Update the user name.
     await prisma.project.update({

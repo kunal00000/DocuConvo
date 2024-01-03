@@ -34,12 +34,7 @@ const PineconeEnvironment = [
   'eu-west1-gcp'
 ]
 
-const PineconeInfo = ({
-  pinecone_ApiKey,
-  pinecone_environment,
-  pinecone_indexName,
-  updateData
-}) => {
+const PineconeInfo = ({ pinecone_ApiKey, pinecone_indexName, updateData }) => {
   const {
     register,
     handleSubmit,

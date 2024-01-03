@@ -24,7 +24,7 @@ export const authOptions: NextAuthOptions = {
       clientSecret: env.GOOGLE_CLIENT_SECRET
     }),
     EmailProvider({
-      sendVerificationRequest: async ({ identifier, url, provider }) => {
+      sendVerificationRequest: async ({ identifier, url }) => {
         const user = await prisma.user.findUnique({
           where: {
             email: identifier
@@ -41,7 +41,7 @@ export const authOptions: NextAuthOptions = {
           : 'Activate your account'
 
         try {
-          const result = await resend.emails.send({
+          await resend.emails.send({
             from: 'DocuConvo App <onboarding@resend.dev>',
             to:
               process.env.NODE_ENV === 'development'
@@ -60,8 +60,6 @@ export const authOptions: NextAuthOptions = {
               'X-Entity-Ref-ID': new Date().getTime() + ''
             }
           })
-
-          // console.log(result)
         } catch (error) {
           throw new Error('Failed to send verification email.')
         }

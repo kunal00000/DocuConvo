@@ -5,7 +5,7 @@ type NavProps = {
   goTo: (index: number) => void
 }
 
-const SideBar = ({ currentStepIndex, goTo }: NavProps) => {
+const SideBar = ({ currentStepIndex }: NavProps) => {
   return (
     <nav>
       <Button

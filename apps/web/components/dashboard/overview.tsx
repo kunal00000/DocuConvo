@@ -6,12 +6,6 @@ import { Card } from '@/components/ui/card'
 import { toast } from '@/components/ui/use-toast'
 
 export const Overview = ({ project }: any) => {
-  async function onSubmit(data: FormData) {
-    console.log(data)
-
-    // const {status} =  await updateDocItemOpenAI(data,docItem.id)
-  }
-
   return (
     <Card className=''>
       <div className='mx-6 py-4'>

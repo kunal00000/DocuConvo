@@ -27,7 +27,6 @@ interface ProjectFormProps {
 }
 
 export function ProjectSettingForm({ project }: ProjectFormProps) {
-  //  console.log(project)
   const [isPending, startTransition] = useTransition()
 
   const {
@@ -50,7 +49,6 @@ export function ProjectSettingForm({ project }: ProjectFormProps) {
   })
 
   const onSubmitForm = async (data: FormData) => {
-    // console.log(data)
     startTransition(async () => {
       const { status } = await updateProject(data)
 

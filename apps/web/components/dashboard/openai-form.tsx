@@ -40,7 +40,6 @@ const OpenAIForm = ({
     })
     setIsLoading(false)
     if (status === 'error') {
-      console.log(message)
       toast({
         title: 'Something went wrong.',
         description: message + ' Please try again.',
