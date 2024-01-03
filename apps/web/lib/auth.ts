@@ -4,7 +4,6 @@ import GoogleProvider from 'next-auth/providers/google'
 
 import { siteConfig } from '@/config/site'
 import MagicLinkEmail from '@/emails/magic-link-email'
-import { env } from '@/env.mjs'
 import { prisma } from '@docuconvo/database'
 import { PrismaAdapter } from '@next-auth/prisma-adapter'
 
@@ -20,8 +19,8 @@ export const authOptions: NextAuthOptions = {
   },
   providers: [
     GoogleProvider({
-      clientId: env.GOOGLE_CLIENT_ID,
-      clientSecret: env.GOOGLE_CLIENT_SECRET
+      clientId: process.env.GOOGLE_CLIENT_ID || '',
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET || ''
     }),
     EmailProvider({
       sendVerificationRequest: async ({ identifier, url }) => {
