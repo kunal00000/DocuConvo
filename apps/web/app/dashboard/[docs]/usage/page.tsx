@@ -1,4 +1,3 @@
-
 import { DocsHeader } from '@/components/dashboard/docs-header'
 import { DashboardShell } from '@/components/dashboard/shell'
 import { dashboardConfig } from '@/config/dashboard'

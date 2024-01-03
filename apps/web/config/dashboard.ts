@@ -3,10 +3,9 @@ import { DashboardConfig } from 'types'
 export const dashboardConfig: DashboardConfig = {
   mainNav: [
     {
-      title: "Documentation",
-      href: "https://github.com/kunal00000/DocuConvo?tab=readme-ov-file#introduction",
-    },
- 
+      title: 'Documentation',
+      href: 'https://github.com/kunal00000/DocuConvo?tab=readme-ov-file#introduction'
+    }
   ],
   sidebarNav: [
     {

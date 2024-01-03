@@ -74,11 +74,9 @@ export function ProjectSettingForm({ project }: ProjectFormProps) {
           <CardTitle>Project Info</CardTitle>
           <CardDescription>Update your project info here.</CardDescription>
         </CardHeader>
-        <CardContent >
+        <CardContent>
           <div className='grid gap-1'>
-            <Label  htmlFor='projectName'>
-              Project Name
-            </Label>
+            <Label htmlFor='projectName'>Project Name</Label>
             <Input
               id='projectName'
               className='w-full sm:w-[400px]'
@@ -90,9 +88,7 @@ export function ProjectSettingForm({ project }: ProjectFormProps) {
             )}
           </div>
           <div className=' mt-3 grid gap-1'>
-            <Label  htmlFor='website_url'>
-              Website Url
-            </Label>
+            <Label htmlFor='website_url'>Website Url</Label>
             <Input
               id='website_url'
               className='w-full sm:w-[400px]'
@@ -104,9 +100,7 @@ export function ProjectSettingForm({ project }: ProjectFormProps) {
             )}
           </div>
           <div className=' mt-3 grid gap-1'>
-            <Label  htmlFor='match'>
-              Website Url Match
-            </Label>
+            <Label htmlFor='match'>Website Url Match</Label>
             <Input
               id='match'
               className='w-full sm:w-[400px]'
@@ -118,9 +112,7 @@ export function ProjectSettingForm({ project }: ProjectFormProps) {
             )}
           </div>
           <div className=' mt-3 grid gap-1'>
-            <Label  htmlFor='cssSelector'>
-              web page css selector
-            </Label>
+            <Label htmlFor='cssSelector'>web page css selector</Label>
             <Input
               id='cssSelector'
               className='w-full sm:w-[400px]'
@@ -132,9 +124,7 @@ export function ProjectSettingForm({ project }: ProjectFormProps) {
             )}
           </div>
           <div className=' mt-3 grid gap-1'>
-            <Label  htmlFor='pinecone_ApiKey'>
-              Pinecone API Key
-            </Label>
+            <Label htmlFor='pinecone_ApiKey'>Pinecone API Key</Label>
             <Input
               id='pinecone_ApiKey'
               className='w-full sm:w-[400px]'
@@ -146,9 +136,7 @@ export function ProjectSettingForm({ project }: ProjectFormProps) {
             )}
           </div>
           <div className=' mt-3 grid gap-1'>
-            <Label  htmlFor='pinecone_environment'>
-              Pinecone Environment
-            </Label>
+            <Label htmlFor='pinecone_environment'>Pinecone Environment</Label>
             <Input
               id='pinecone_environment'
               className='w-full sm:w-[400px]'
@@ -160,9 +148,7 @@ export function ProjectSettingForm({ project }: ProjectFormProps) {
             )}
           </div>
           <div className=' mt-3 grid gap-1'>
-            <Label  htmlFor='pinecone_indexName'>
-              Pinecone Index Name
-            </Label>
+            <Label htmlFor='pinecone_indexName'>Pinecone Index Name</Label>
             <Input
               id='pinecone_indexName'
               className='w-full sm:w-[400px]'
@@ -174,9 +160,7 @@ export function ProjectSettingForm({ project }: ProjectFormProps) {
             )}
           </div>
           <div className=' mt-3 grid gap-1'>
-            <Label  htmlFor='openai_ApiKey'>
-              OpenAI API Key
-            </Label>
+            <Label htmlFor='openai_ApiKey'>OpenAI API Key</Label>
             <Input
               id='openai_ApiKey'
               className='w-full sm:w-[400px]'

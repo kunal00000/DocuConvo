@@ -2,10 +2,7 @@
 
 import Link from 'next/link'
 
-
-import {
-  Card
-} from '@/components/ui/card'
+import { Card } from '@/components/ui/card'
 import { toast } from '@/components/ui/use-toast'
 
 export const Overview = ({ project }: any) => {

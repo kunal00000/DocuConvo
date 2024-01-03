@@ -24,7 +24,6 @@
     "@repo/typescript-config": "workspace:*",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "prettier": "^3.1.1",
-    "prettier-plugin-tailwindcss": "^0.5.9",
     "turbo": "latest"
   },
   "prettier": {
@@ -35,8 +34,7 @@
     "trailingComma": "none",
     "semi": false,
     "plugins": [
-      "@trivago/prettier-plugin-sort-imports",
-      "prettier-plugin-tailwindcss"
+      "@trivago/prettier-plugin-sort-imports"
     ],
     "importOrder": [
       "^(react/(.*)$)|^(react$)",

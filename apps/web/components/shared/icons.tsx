@@ -24,8 +24,7 @@ import {
   X,
   LucideIcon,
   ClipboardCopy
-} from "lucide-react"
-
+} from 'lucide-react'
 
 export type Icon = LucideIcon
 export const Icons = {
