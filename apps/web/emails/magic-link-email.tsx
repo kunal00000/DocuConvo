@@ -29,6 +29,7 @@ const MagicLinkEmail = ({
   <Html>
     <Head />
     <Preview>
+      {/* TODO: write better preview text for email */}
       The sales intelligence platform that helps you uncover qualified leads.
     </Preview>
     <Tailwind>
@@ -57,9 +58,6 @@ const MagicLinkEmail = ({
             </Text>
           ) : null}
           <Hr className='my-4 border-t-2 border-gray-300' />
-          <Text className='text-sm text-gray-600'>
-            123 Code Street, Suite 404, Devtown, CA 98765
-          </Text>
         </Container>
       </Body>
     </Tailwind>

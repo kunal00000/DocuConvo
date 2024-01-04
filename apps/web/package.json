@@ -55,6 +55,8 @@
     "@types/react-dom": "18.2.18",
     "autoprefixer": "^10.4.16",
     "eslint": "^8.56.0",
+    "eslint-config-next": "^14.0.4",
+    "eslint-config-react": "^1.1.7",
     "eslint-plugin-tailwindcss": "^3.13.0",
     "eslint-plugin-unused-imports": "^3.0.0",
     "postcss": "^8.4.32",
