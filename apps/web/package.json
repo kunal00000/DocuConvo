@@ -10,7 +10,8 @@
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "preview": "next build && next start",
-    "email": "email dev --dir emails --port 3333"
+    "email": "email dev --dir emails --port 3333",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@docuconvo/database": "workspace:*",
