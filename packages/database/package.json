@@ -7,7 +7,7 @@
     "db:migrate:deploy": "prisma migrate deploy",
     "db:migrate:dev": "prisma migrate dev",
     "db:push": "prisma db push",
-    "build": "tsc --build",
+    "build": "npx prisma generate && tsc --build",
     "format": "prisma format",
     "generate": "prisma generate",
     "prebuild": "npm run generate",
