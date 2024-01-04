@@ -23,7 +23,7 @@ export const SignInModal = () => {
       email: email
     }
 
-    await axios.post('http://localhost:3000/api/sendemail', data)
+    await axios.post(`${siteConfig.url}/api/sendemail`, data)
     signInModal.onClose()
   }
 
