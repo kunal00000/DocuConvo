@@ -23,42 +23,50 @@ export async function generateEmbeddings(
     projectId: string
   }
 ) {
-  const pinecone = new Pinecone({
-    apiKey: pineconeApiKey,
-    environment: pineconeEnvironment
-  })
+  try {
+    const pinecone = new Pinecone({
+      apiKey: pineconeApiKey,
+      environment: pineconeEnvironment
+    })
 
-  const pineconeIndex = await pinecone.Index(pineconeIndexName)
+    const pineconeIndex = await pinecone.Index(pineconeIndexName)
 
-  const embeddings = new HuggingFaceInferenceEmbeddings({
-    model: 'sentence-transformers/all-MiniLM-L6-v2',
-    apiKey: hfApiKey
-  })
-  const { isExist } = await checkIfEmbeddingsExist(
-    pineconeIndex,
-    embeddings,
-    projectId
-  )
+    const embeddings = new HuggingFaceInferenceEmbeddings({
+      model: 'sentence-transformers/all-MiniLM-L6-v2',
+      apiKey: hfApiKey
+    })
 
-  if (isExist) {
-    // delete existing embeddings
-    // TODO: Delete for same urls only not for all (org and project)
-    // TODO: Filters in this operation are not supported 'Starter'
-    // TODO: Switch to supabase or Use deleteAll for now (self-host)
-    await pineconeIndex.deleteAll()
+    const { isExist } = await checkIfEmbeddingsExist(
+      pineconeIndex,
+      embeddings,
+      projectId
+    )
+
+    if (isExist) {
+      // delete existing embeddings
+      // TODO: Delete for same urls only not for all (org and project)
+      // TODO: Filters in this operation are not supported 'Starter'
+      // TODO: Switch to supabase or Use deleteAll for now (self-host)
+      await pineconeIndex.deleteAll()
+    }
+
+    await PineconeStore.fromTexts(
+      dataset.map((data) => data.text!),
+      dataset.map((data) => {
+        return {
+          url: data.url,
+          project: projectId
+        }
+      }),
+      embeddings,
+      { pineconeIndex }
+    )
+
+    return { success: true, message: 'Embeddings generated successfully' }
+  } catch (error: any) {
+    throw new Error(error.message)
+    // return { success: false, message: 'Embeddings: ' + error.message }
   }
-
-  await PineconeStore.fromTexts(
-    dataset.map((data) => data.text!),
-    dataset.map((data) => {
-      return {
-        url: data.url,
-        project: projectId
-      }
-    }),
-    embeddings,
-    { pineconeIndex }
-  )
 }
 
 export async function checkIfEmbeddingsExist(

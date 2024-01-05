@@ -2,9 +2,8 @@ import { PlaywrightCrawler } from 'crawlee'
 
 import { generateEmbeddings } from './lib/generate-embeddings'
 import { DocMetadata } from './types/docs'
-import { crawlQueue } from './controllers/addtoQueue.controllers'
 
-export async function runCrawl(
+export async function runCrawler(
   websiteUrl: string,
   match: string,
   cssSelector: string,
@@ -58,26 +57,20 @@ export async function runCrawl(
   })
 
   try {
-
-    crawlQueue.process(async (job, done) => {
-      // TODO: add website url from job data, job data has the bunch of info we passed in queue route
-      console.log(job.data)
-      await crawler.run([websiteUrl])
-      done()
-    })
-
+    const stats = await crawler.run([websiteUrl])
 
     await crawler.requestQueue?.drop()
 
-    await generateEmbeddings(data, {
+    const x = await generateEmbeddings(data, {
       pineconeApiKey,
       pineconeEnvironment,
       pineconeIndexName,
       hfApiKey,
       projectId
     })
-    return { success: true }
-  } catch (error) {
-    return { success: false, error }
+    return { success: true, message: 'crawl completed' }
+  } catch (error: any) {
+    throw new Error(error.message)
+    // return { success: false, error: 'Crawl: '+error.message }
   }
 }
