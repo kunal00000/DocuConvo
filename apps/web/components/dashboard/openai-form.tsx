@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { useRouter } from 'next/navigation'
+
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
@@ -31,9 +33,20 @@ const OpenAIForm = ({
     resolver: zodResolver(openAiSchema)
   })
 
+  const generateEmbedding = async () => {
+    await fetch('http://localhost:3000/api/queue', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${process.env.Authtoken}`
+      },
+      body: JSON.stringify(project)
+    })
+  }
+  const router = useRouter()
   const onSubmitForm = async (data: FormData) => {
     setIsLoading(true)
-    const { status, message } = await createProject({
+    const { status, message, id } = await createProject({
       project,
       pinecone,
       openai: data
@@ -55,6 +68,9 @@ const OpenAIForm = ({
       updateData({ project: {}, pinecone: {}, openai: {} })
       previousStep()
       previousStep()
+      generateEmbedding()
+
+      router.push(`/dashboard/${id}`)
     }
   }
 

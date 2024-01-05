@@ -1,5 +1,6 @@
-import express from "express";
-import { addToQueue } from "../controllers/addtoQueue.controllers";
+import express from 'express'
+
+import { addToQueue } from '../controllers/addtoQueue.controllers'
 
 const queueRouter = express.Router()
 

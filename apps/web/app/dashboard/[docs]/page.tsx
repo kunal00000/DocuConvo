@@ -15,13 +15,7 @@ export default async function Page({ params }) {
   return (
     <DashboardShell>
       <DocsHeader project={project} items={items} />
-
-      {project?.status === 'embedding' && (
-        <div className='flex flex-col gap-4'>
-          making your docs full of knowledge...
-        </div>
-      )}
-      {project?.status === 'created' && <Overview project={project} />}
+      <Overview project={project} />
     </DashboardShell>
   )
 }
