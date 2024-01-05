@@ -56,7 +56,7 @@ export async function createProject({
     })
 
     revalidatePath('/dashboard')
-    return { status: 'success', message: 'Project created successfully.' }
+    return { status: 'success', message: 'Project created successfully.', id }
   } catch (error) {
     return { status: 'error', message: error.message }
   }

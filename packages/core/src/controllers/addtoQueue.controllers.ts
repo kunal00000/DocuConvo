@@ -2,6 +2,8 @@ import Bull from 'bull'
 import dotenv from 'dotenv'
 import { Request, Response } from 'express'
 
+import { prisma } from '@docuconvo/database'
+
 import { REDIS_PASSWORD, REDIS_PORT, REDIS_URL } from '../lib/redis-creds'
 import { mailOptions, sendAlert } from '../lib/send-alert'
 import { runCrawler } from '../main'
@@ -73,6 +75,14 @@ crawlQueue.process(async (job, done) => {
       ...mailOptions,
       subject: 'Docuconvo Alert - ✅ Crawl Successful',
       text: `Crawl successful for ${job.data['websiteUrl']} with success: ${success} and message: ${message}. Take further actions accordingly.`
+    })
+    await prisma.project.update({
+      where: {
+        id: job.data['projectId']
+      },
+      data: {
+        status: 'created'
+      }
     })
     done(null, { success, message })
   } catch (error: any) {
