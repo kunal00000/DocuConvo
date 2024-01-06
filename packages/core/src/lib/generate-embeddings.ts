@@ -1,4 +1,4 @@
-import { HuggingFaceInferenceEmbeddings } from 'langchain/embeddings/hf'
+import { OpenAIEmbeddings } from 'langchain/embeddings/openai'
 import { PineconeStore } from 'langchain/vectorstores/pinecone'
 
 import { Index, Pinecone, RecordMetadata } from '@pinecone-database/pinecone'
@@ -13,13 +13,13 @@ export async function generateEmbeddings(
     pineconeApiKey,
     pineconeEnvironment,
     pineconeIndexName,
-    hfApiKey,
+    openaiApiKey,
     projectId
   }: {
     pineconeApiKey: string
     pineconeEnvironment: string
     pineconeIndexName: string
-    hfApiKey: string
+    openaiApiKey: string
     projectId: string
   }
 ) {
@@ -31,9 +31,8 @@ export async function generateEmbeddings(
 
     const pineconeIndex = await pinecone.Index(pineconeIndexName)
 
-    const embeddings = new HuggingFaceInferenceEmbeddings({
-      model: 'sentence-transformers/all-MiniLM-L6-v2',
-      apiKey: hfApiKey
+    const embeddings = new OpenAIEmbeddings({
+      openAIApiKey: openaiApiKey
     })
 
     const { isExist } = await checkIfEmbeddingsExist(
@@ -71,7 +70,7 @@ export async function generateEmbeddings(
 
 export async function checkIfEmbeddingsExist(
   pineconeIndex: Index<RecordMetadata>,
-  embeddings: HuggingFaceInferenceEmbeddings,
+  embeddings: OpenAIEmbeddings,
   projectId: string
 ) {
   const { totalRecordCount } = await pineconeIndex.describeIndexStats()

@@ -11,7 +11,7 @@ export async function runCrawler(
   pineconeApiKey: string,
   pineconeEnvironment: string,
   pineconeIndexName: string,
-  hfApiKey: string,
+  openaiApiKey: string,
   projectId: string
 ) {
   let data: DocMetadata[] = []
@@ -57,15 +57,15 @@ export async function runCrawler(
   })
 
   try {
-    const stats = await crawler.run([websiteUrl])
+    await crawler.run([websiteUrl])
 
     await crawler.requestQueue?.drop()
 
-    const x = await generateEmbeddings(data, {
+    await generateEmbeddings(data, {
       pineconeApiKey,
       pineconeEnvironment,
       pineconeIndexName,
-      hfApiKey,
+      openaiApiKey,
       projectId
     })
     return { success: true, message: 'crawl completed' }

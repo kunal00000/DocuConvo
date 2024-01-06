@@ -1,5 +1,4 @@
 import type { Request, Response } from 'express'
-import { HuggingFaceInferenceEmbeddings } from 'langchain/embeddings/hf'
 import { OpenAIEmbeddings } from 'langchain/embeddings/openai'
 import { PineconeStore } from 'langchain/vectorstores/pinecone'
 import { Configuration, OpenAIApi, ResponseTypes } from 'openai-edge'
@@ -29,9 +28,8 @@ export const searchQuery = async (req: Request, res: Response) => {
 
     const pineconeIndex = await pinecone.Index(pineconeIndexName)
 
-    const embeddings = new HuggingFaceInferenceEmbeddings({
-      model: 'sentence-transformers/all-MiniLM-L6-v2',
-      apiKey: openaiApiKey
+    const embeddings = new OpenAIEmbeddings({
+      openAIApiKey: openaiApiKey
     })
 
     const vectorStore = await PineconeStore.fromExistingIndex(embeddings, {
@@ -43,9 +41,9 @@ export const searchQuery = async (req: Request, res: Response) => {
       project: projectId
     })
     let contextText: string =
-      results[0].pageContent.replace(/<[^>]*>?/gm, '') +
+      results[0]?.pageContent.replace(/<[^>]*>?/gm, '') +
       ' ' +
-      results[1].pageContent.replace(/<[^>]*>?/gm, '')
+      results[1]?.pageContent.replace(/<[^>]*>?/gm, '')
 
     //gpt 3.5 turbo
     const response = await openai.createChatCompletion({

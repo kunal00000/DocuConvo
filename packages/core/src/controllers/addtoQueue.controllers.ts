@@ -33,7 +33,7 @@ export async function addToQueue(req: Request, res: Response) {
       pineconeApiKey,
       pineconeEnvironment,
       pineconeIndexName,
-      hfApiKey,
+      openaiApiKey,
       projectId
     } = req.body
     await crawlQueue.add({
@@ -44,7 +44,7 @@ export async function addToQueue(req: Request, res: Response) {
       pineconeApiKey,
       pineconeEnvironment,
       pineconeIndexName,
-      hfApiKey,
+      openaiApiKey,
       projectId
     })
     return res
@@ -67,7 +67,7 @@ crawlQueue.process(async (job, done) => {
       job.data['pineconeApiKey'],
       job.data['pineconeEnvironment'],
       job.data['pineconeIndexName'],
-      job.data['hfApiKey'],
+      job.data['openaiApiKey'],
       job.data['projectId']
     )
 
