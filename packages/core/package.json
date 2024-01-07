@@ -33,7 +33,7 @@
   },
   "scripts": {
     "start": "npm run start:dev",
-    "dev": "node dist/index.js",
+    "dev": "NODE_OPTIONS='--experimental-specifier-resolution=node' node dist/index.js",
     "start:dev": "tsx src/index.ts",
     "build": "tsc",
     "test": "echo \"Error: oops, the actor has no tests yet, sad!\" && exit 1",
