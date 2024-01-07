@@ -1,9 +1,9 @@
 import cors from 'cors'
 import express from 'express'
 
-import { queryAuth } from './middlewares/auth.middleware'
-import queryRouter from './routes/query.routes'
-import queueRouter from './routes/queue.routes'
+import { queryAuth } from './middlewares/auth.middleware.js'
+import queryRouter from './routes/query.routes.js'
+import queueRouter from './routes/queue.routes.js'
 
 const app = express()
 const PORT = process.env.PORT || 3000

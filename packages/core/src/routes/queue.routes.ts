@@ -1,6 +1,6 @@
 import express from 'express'
 
-import { addToQueue } from '../controllers/addtoQueue.controllers'
+import { addToQueue } from '../controllers/addtoQueue.controllers.js'
 
 const queueRouter = express.Router()
 

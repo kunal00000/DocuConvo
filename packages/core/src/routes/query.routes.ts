@@ -1,6 +1,6 @@
 import express from 'express'
 
-import { searchQuery } from '../controllers/query.controllers'
+import { searchQuery } from '../controllers/query.controllers.js'
 
 const router = express.Router()
 
