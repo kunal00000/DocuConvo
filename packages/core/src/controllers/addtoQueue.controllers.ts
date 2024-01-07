@@ -4,9 +4,9 @@ import { Request, Response } from 'express'
 
 import { prisma } from '@docuconvo/database'
 
-import { REDIS_PASSWORD, REDIS_PORT, REDIS_URL } from '../lib/redis-creds.js'
-import { mailOptions, sendAlert } from '../lib/send-alert.js'
-import { runCrawler } from '../main.js'
+import { REDIS_PASSWORD, REDIS_PORT, REDIS_URL } from '../lib/redis-creds'
+import { mailOptions, sendAlert } from '../lib/send-alert'
+import { runCrawler } from '../main'
 
 dotenv.config()
 

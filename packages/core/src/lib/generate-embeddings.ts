@@ -3,7 +3,7 @@ import { PineconeStore } from 'langchain/vectorstores/pinecone'
 
 import { Index, Pinecone, RecordMetadata } from '@pinecone-database/pinecone'
 
-import { DocMetadata } from '../types/docs.js'
+import { DocMetadata } from '../types/docs'
 
 // TODO: handle when vector store is not pinecone
 // TODO: handle when embeddings are stored already

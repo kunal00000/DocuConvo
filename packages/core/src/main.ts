@@ -1,7 +1,7 @@
 import { PlaywrightCrawler } from 'crawlee'
 
-import { generateEmbeddings } from './lib/generate-embeddings.js'
-import { DocMetadata } from './types/docs.js'
+import { generateEmbeddings } from './lib/generate-embeddings'
+import { DocMetadata } from './types/docs'
 
 export async function runCrawler(
   websiteUrl: string,

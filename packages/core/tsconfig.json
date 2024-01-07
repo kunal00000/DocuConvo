@@ -8,6 +8,7 @@
     "noUnusedLocals": true,
     "skipLibCheck": true,
     "lib": ["DOM"],
+    "strict": true
   },
   "include": ["./src/**/*"]
 }
