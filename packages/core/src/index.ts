@@ -13,6 +13,10 @@ app.use(express.json())
 app.use(cors({ origin: '*' })) // default: allows all origins to access the server
 
 // * routes
+app.get('/', (req, res) => {
+  console.log(req.headers)
+  res.send('Hello World!')
+})
 app.use('/api', queueRouter)
 app.use('/api', queryAuth, queryRouter)
 
