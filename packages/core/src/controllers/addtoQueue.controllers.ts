@@ -2,8 +2,7 @@ import Bull from 'bull'
 import dotenv from 'dotenv'
 import { Request, Response } from 'express'
 
-import { prisma } from '@docuconvo/database'
-
+import { prisma } from '../lib/db.js'
 import { REDIS_PASSWORD, REDIS_PORT, REDIS_URL } from '../lib/redis-creds.js'
 import { mailOptions, sendAlert } from '../lib/send-alert.js'
 import { runCrawler } from '../main.js'

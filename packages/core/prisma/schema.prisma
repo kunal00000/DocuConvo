@@ -1,0 +1,108 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map(name: "sessions")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  createdAt     DateTime  @default(now()) @map(name: "created_at")
+  updatedAt     DateTime  @default(now()) @map(name: "updated_at")
+
+  stripeCustomerId       String?   @unique @map(name: "stripe_customer_id")
+  stripeSubscriptionId   String?   @unique @map(name: "stripe_subscription_id")
+  stripePriceId          String?   @map(name: "stripe_price_id")
+  stripeCurrentPeriodEnd DateTime? @map(name: "stripe_current_period_end")
+  projects               Project[]
+  sessions               Session[]
+  accounts               Account[]
+
+  @@map(name: "users")
+}
+
+model Account {
+  id                String   @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?  @db.Text
+  access_token      String?  @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?  @db.Text
+  session_state     String?
+  createdAt         DateTime @default(now()) @map(name: "created_at")
+  updatedAt         DateTime @default(now()) @map(name: "updated_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+  @@map(name: "accounts")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+model Project {
+  id                      String         @id @unique @default(cuid())
+  docuconvo_key           String?        @unique
+  name                    String
+  websiteUrl              String         @map("website_url")
+  match                   String
+  cssSelector             String         @map("css_selector")
+  maxPageToCrawl          Int?           @map("max_page_to_crawl")
+  numberOfRequests        Int?
+  numberOfArticlesCrawled Int?
+  pineconeApiKey          String?        @map("pinecone_api_key")
+  pineconeIndexName       String?        @map("pinecone_indexName")
+  pineconeEnvironment     String?        @map("pinecone_environment")
+  openaiApiKey            String?        @map("openai_api_key")
+  status                  ProjectStatus? @default(pinecone)
+  createdAt               DateTime       @default(now()) @map("created_at")
+  updatedAt               DateTime       @default(now()) @map("updated_at")
+  creatorId               String?
+  Creator                 User?          @relation(fields: [creatorId], references: [id])
+
+  @@index([id, creatorId])
+  @@map("projects")
+}
+
+model userwaitlist {
+  id       String @id @default(cuid())
+  email    String @unique
+  username String
+}
+
+enum ProjectStatus {
+  created
+  pinecone
+  openai
+  embedding
+}
