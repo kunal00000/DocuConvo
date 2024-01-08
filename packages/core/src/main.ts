@@ -52,6 +52,11 @@ export async function runCrawler(
       // save data for further creating and storing embeddings
       saveData({ title, url: request.loadedUrl, text: cleanText })
     },
+    launchContext: {
+      launchOptions: {
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
+      }
+    },
     headless: true,
     maxRequestsPerCrawl: maxPagesToCrawl
   })
