@@ -6,7 +6,19 @@ interface useSignInModalStore {
   onClose: () => void
 }
 
+interface useWaitlistModalStore {
+  isOpen: boolean
+  onOpen: () => void
+  onClose: () => void
+}
+
 export const useSigninModal = create<useSignInModalStore>((set) => ({
+  isOpen: false,
+  onOpen: () => set({ isOpen: true }),
+  onClose: () => set({ isOpen: false })
+}))
+
+export const useWaitlistModal = create<useWaitlistModalStore>((set) => ({
   isOpen: false,
   onOpen: () => set({ isOpen: true }),
   onClose: () => set({ isOpen: false })
