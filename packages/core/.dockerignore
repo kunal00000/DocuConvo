@@ -8,3 +8,5 @@ storage
 
 # installed files
 node_modules
+.turbo
+.env.example

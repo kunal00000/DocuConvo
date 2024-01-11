@@ -29,13 +29,7 @@ export async function runCrawler(
 
   const crawler = new PlaywrightCrawler(
     {
-      requestHandler: async ({
-        page,
-        request,
-        enqueueLinks,
-        pushData,
-        log
-      }) => {
+      requestHandler: async ({ page, request, enqueueLinks, log }) => {
         await enqueueLinks({
           globs: typeof match === 'string' ? [match] : match // Queue all link with this pattern to crawl
         })
@@ -57,7 +51,6 @@ export async function runCrawler(
           ?.replace(/\n/g, ' ')
           .replace(/\s+/g, ' ')
 
-        pushData({ title, url: request.loadedUrl, text: cleanText })
         // save data for further creating and storing embeddings
         saveData({ title, url: request.loadedUrl, text: cleanText })
       },
@@ -67,7 +60,9 @@ export async function runCrawler(
         }
       },
       headless: true,
-      maxRequestsPerCrawl: maxPagesToCrawl
+      maxRequestsPerCrawl: maxPagesToCrawl,
+      maxConcurrency: 1,
+      maxRequestRetries: 2
     },
     new Configuration({
       persistStorage: false
