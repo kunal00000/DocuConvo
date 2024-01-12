@@ -19,16 +19,15 @@ export const dashboardConfig: DashboardConfig = {
       icon: 'settings'
     }
   ],
-  docsNav: [
+  projectNav: [
     {
-      title: 'overview',
+      title: 'Overview',
       href: '/',
       icon: 'post'
     },
-
     {
-      title: 'setting',
-      href: '/setting',
+      title: 'Settings',
+      href: '/settings',
       icon: 'settings'
     }
   ]
