@@ -9,15 +9,15 @@ const ContentImageData = [
     content:
       'Our first priority is to make developer life easier. We have made the integration process as simple as possible. You can integrate Docuconvo with your existing documentation website in just a three lines of code. We have also provided a detailed documentation for the same.',
     align: 'right',
-    image: '/feature1.png'
+    image: '/features1.png'
   },
   {
     id: 2,
-    title: 'Easy info updates',
+    title: 'Easy search',
     content:
-      "We understand that the documentation is a living thing and it's constantly evolving. We have made the process of updating the information as simple as possible. You can update the information in your documentation website and Docuconvo will automatically update the knowledge base.",
+      'We have made the search process as simple as possible. You can search for the queries in the search bar and we will provide you with the best possible answer. We have also provided a detailed documentation for the same.',
     align: 'left',
-    image: '/feature2.png'
+    image: '/features2.png'
   }
 ]
 
@@ -25,7 +25,7 @@ const Features = () => {
   return (
     <section className='space-y-6 flex justify-center items-center'>
       <div className=' flex max-w-[64rem] flex-col items-center gap-5 text-center pt-10 md:pt-20 '>
-        <h2 className='text-lg tracking-tight bg-white border border-gray-700 rounded-full px-3  '>
+        <h2 className='text-lg tracking-tight bg-white border border-gray-700 rounded-full px-4 dark:text-black  '>
           Features
         </h2>
         <h3 className='text-2xl font-semibold md:mt-4 max-w-screen-md tracking-tight sm:text-3xl md:text-4xl lg:text-5xl'>
@@ -59,8 +59,8 @@ const Features = () => {
                   item.align === 'left'
                     ? 'md:pr-16 lg:pr-24 xl:pr-32 ml-auto'
                     : 'md:pl-16 lg:pl-24 xl:pl-32  mr-auto'
-                } my-auto content text-black/60`}>
-                <h3 className='mb-6 text-xl md:text-2xl font-semibold text-black'>
+                } my-auto content text-black/60 dark:text-white/60`}>
+                <h3 className='mb-6 text-xl md:text-2xl font-semibold text-black dark:text-white'>
                   {item.title}
                 </h3>
                 <p>{item.content}</p>

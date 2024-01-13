@@ -52,7 +52,7 @@ export const FAQs = () => {
   return (
     <section className=' my-16 drop-shadow-xl max-w-3xl mx-auto offset-y-0 offset-x-8'>
       <div className=' flex  flex-col items-center gap-5 text-center pt-10 md:pt-20 '>
-        <h2 className='text-lg tracking-tight bg-white border border-gray-700 rounded-full px-3 w-max '>
+        <h2 className='text-lg tracking-tight bg-white border border-gray-700 rounded-full px-4 dark:text-black  w-max '>
           FAQs
         </h2>
         <h3 className='text-2xl font-semibold md:mt-4 max-w-screen-md tracking-tight sm:text-3xl md:text-4xl lg:text-5xl'>
@@ -66,7 +66,7 @@ export const FAQs = () => {
             <div
               key={accordionItem.id}
               className={clsx(
-                ' border border-neutral-200 bg-white overflow-hidden',
+                ' border border-neutral-200 dark:border-black bg-white dark:bg-black overflow-hidden',
                 {
                   [accordionItemType.top]: index === 0,
                   [accordionItemType.default]:
@@ -76,7 +76,7 @@ export const FAQs = () => {
               )}>
               <h2 className=' mb-0'>
                 <button
-                  className='group relative flex w-full font-semibold items-center rounded-t-lg border-0 bg-white py-4 px-5 text-left text-base text-neutral-800 transition'
+                  className='group relative flex w-full font-semibold items-center rounded-t-lg border-0 bg-white dark:bg-black py-4 px-5 text-left text-base text-neutral-800 dark:text-white transition'
                   type='button'
                   aria-expanded={accordionItem.isOpen}
                   onClick={() => accordionClickHandle(accordionItem.id)}>
