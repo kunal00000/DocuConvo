@@ -4,7 +4,7 @@ import GoogleProvider from 'next-auth/providers/google'
 
 import { siteConfig } from '@/config/site'
 import MagicLinkEmail from '@/emails/magic-link-email'
-import { prisma } from '@docuconvo/database'
+import { prisma } from '@/lib/db'
 import { PrismaAdapter } from '@next-auth/prisma-adapter'
 
 import { resend } from './email'

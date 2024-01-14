@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  transpilePackages: ['@docuconvo/database'],
   swcMinify: true,
   images: {
     remotePatterns: [
@@ -14,9 +13,6 @@ const nextConfig = {
         hostname: 'lh3.googleusercontent.com'
       }
     ]
-  },
-  experimental: {
-    serverComponentsExternalPackages: ['@prisma/client']
   }
 }
 

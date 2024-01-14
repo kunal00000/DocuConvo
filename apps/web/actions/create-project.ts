@@ -2,9 +2,9 @@
 
 import { revalidatePath } from 'next/cache'
 
+import { prisma } from '@/lib/db'
 import { getCurrentUser } from '@/lib/session'
 import { ProjectForm } from '@/lib/validations/add-project-form'
-import { prisma } from '@docuconvo/database'
 
 export async function createProject({
   project,

@@ -3,7 +3,7 @@
 import { getServerSession } from 'next-auth'
 
 import { authOptions } from '@/lib/auth'
-import { prisma } from '@docuconvo/database'
+import { prisma } from '@/lib/db'
 
 export type FormData = {
   id: string

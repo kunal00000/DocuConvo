@@ -5,8 +5,8 @@ import { revalidatePath } from 'next/cache'
 import { getServerSession } from 'next-auth'
 
 import { authOptions } from '@/lib/auth'
+import { prisma } from '@/lib/db'
 import { userNameSchema } from '@/lib/validations/user'
-import { prisma } from '@docuconvo/database'
 
 export type FormData = {
   name: string

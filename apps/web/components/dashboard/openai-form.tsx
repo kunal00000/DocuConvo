@@ -17,6 +17,8 @@ import NextBackButton from './next-back-button'
 type FormData = z.infer<typeof openAiSchema>
 
 const NEXT_PUBLIC_API_AUTH_TOKEN = process.env.NEXT_PUBLIC_API_AUTH_TOKEN || ''
+const NEXT_PUBLIC_API_URL =
+  process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'
 
 const OpenAIForm = ({
   project,
@@ -39,7 +41,7 @@ const OpenAIForm = ({
     try {
       if (!createdProject) throw new Error('No project id')
 
-      await fetch('http://localhost:3000/api/queue', {
+      await fetch(`${NEXT_PUBLIC_API_URL}/api/queue`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -8,8 +8,8 @@ import { DashboardHeader } from '@/components/dashboard/header'
 import { DashboardShell } from '@/components/dashboard/shell'
 import { EmptyPlaceholder } from '@/components/shared/empty-placeholder'
 import { authOptions } from '@/lib/auth'
+import { prisma } from '@/lib/db'
 import { getCurrentUser } from '@/lib/session'
-import { prisma } from '@docuconvo/database'
 
 export const metadata = {
   title: 'Dashboard'

@@ -6,17 +6,11 @@
     "github": "https://github.com/kunal00000",
     "url": "https://x.com/kunalvermax"
   },
-  "prisma": {
-    "schema": "packages/database/prisma/schema.prisma"
-  },
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
     "start": "turbo start",
     "lint": "turbo lint",
-    "db:migrate:deploy": "turbo run db:migrate:deploy",
-    "db:push": "turbo run db:push",
-    "generate": "turbo run generate",
     "format": "prettier --write \"**/*.{ts,tsx}\"",
     "check": "prettier --check \"**/*.{ts,tsx}\""
   },

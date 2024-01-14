@@ -4,7 +4,7 @@ import { DocsHeader } from '@/components/dashboard/docs-header'
 import Logs from '@/components/dashboard/logs'
 import { DashboardShell } from '@/components/dashboard/shell'
 import { dashboardConfig } from '@/config/dashboard'
-import { prisma } from '@docuconvo/database'
+import { prisma } from '@/lib/db'
 
 export default async function Page({ params }) {
   const project = await prisma.project.findFirst({
