@@ -7,7 +7,7 @@ import { toast } from '@/components/ui/use-toast'
 
 export const Overview = ({ project }: any) => {
   return (
-    <Card className=''>
+    <Card>
       <div className='mx-6 py-4'>
         <div className='grid grid-cols-12 gap-4 2xl:gap-20'>
           <div className='col-span-12 2xl:col-span-4'>
@@ -18,7 +18,7 @@ export const Overview = ({ project }: any) => {
                 </h3>
                 <p className=' text-base text-gray-700 2xl:max-w-sm'>
                   Interact with your documentation conversational system which
-                  make your documentaion loved by by your users
+                  make your documentaion loved by your users
                 </p>
               </div>
               <div className='flex items-center space-x-2'>
@@ -49,7 +49,7 @@ export const Overview = ({ project }: any) => {
             <div className='relative'>
               <div className='transition-opacity duration-300'>
                 <div className='border-overlay undefined mb-8 overflow-hidden rounded-md border border-t-0 shadow-sm'>
-                  <div className=''>
+                  <div>
                     <div className='border-panel-border-interior-light dark:border-panel-border-interior-dark border-t px-6 py-4'>
                       <div className='input-mono grid gap-2 text-sm md:grid md:grid-cols-12'>
                         <div className='col-span-4 flex flex-col space-y-2'>
@@ -62,7 +62,7 @@ export const Overview = ({ project }: any) => {
                           </label>
                         </div>
                         <div className='col-span-8'>
-                          <div className=''>
+                          <div>
                             <div className='relative'>
                               <input
                                 type='text'
@@ -114,10 +114,7 @@ export const Overview = ({ project }: any) => {
                             className='data-show:mt-2 data-show:animate-slide-down-normal data-hide:animate-slide-up-normal text-sm text-red-900 transition-all'
                           />
                           <div className='er mt-2 text-sm leading-normal text-gray-700'>
-                            <p>
-                              This key has to be used for your all queries get
-                              fullfilled
-                            </p>
+                            <p>This key has to be used for your all searches</p>
                           </div>
                         </div>
                       </div>

@@ -29,7 +29,7 @@ export async function createProject({
       return { status: 'error', message: 'Project name already exists.' }
     }
 
-    const { creatorId, id } = await prisma.project.create({
+    const createdProject = await prisma.project.create({
       data: {
         name: project.projectName,
         websiteUrl: project.websiteUrl,
@@ -47,16 +47,20 @@ export async function createProject({
 
     await prisma.project.update({
       where: {
-        id,
-        creatorId
+        id: createdProject.id,
+        creatorId: createdProject.creatorId
       },
       data: {
-        docuconvo_key: `sk-${creatorId}${id}`
+        docuconvo_key: `sk-${createdProject.creatorId}${createdProject.id}`
       }
     })
 
     revalidatePath('/dashboard')
-    return { status: 'success', message: 'Project created successfully.', id }
+    return {
+      status: 'success',
+      message: 'Project created successfully.',
+      createdProject
+    }
   } catch (error) {
     return { status: 'error', message: error.message }
   }

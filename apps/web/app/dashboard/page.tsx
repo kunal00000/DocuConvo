@@ -37,9 +37,9 @@ export default async function DashboardPage() {
         {!userProjects.length ? (
           <EmptyPlaceholder>
             <EmptyPlaceholder.Icon name='post' />
-            <EmptyPlaceholder.Title>No content created</EmptyPlaceholder.Title>
+            <EmptyPlaceholder.Title>No project created</EmptyPlaceholder.Title>
             <EmptyPlaceholder.Description>
-              You don&apos;t have any content yet. Start creating content.
+              You don&apos;t have any project yet. Start creating project.
             </EmptyPlaceholder.Description>
             <CreateButton />
           </EmptyPlaceholder>

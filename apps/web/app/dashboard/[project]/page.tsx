@@ -1,3 +1,5 @@
+import { notFound } from 'next/navigation'
+
 import { DocsHeader } from '@/components/dashboard/docs-header'
 import { Overview } from '@/components/dashboard/overview'
 import { DashboardShell } from '@/components/dashboard/shell'
@@ -10,8 +12,11 @@ export default async function Page({ params }) {
       id: params.project
     }
   })
-  const items = dashboardConfig.projectNav
 
+  if (!project) notFound()
+
+  const items = dashboardConfig.projectNav
+  // TODO: Use Layout to reduce code duplication
   return (
     <DashboardShell>
       <DocsHeader project={project} items={items} />
