@@ -6,6 +6,8 @@ import { DashboardShell } from '@/components/dashboard/shell'
 import { dashboardConfig } from '@/config/dashboard'
 import { prisma } from '@/lib/db'
 
+export const dynamic = 'force-dynamic'
+
 export default async function Page({ params }) {
   const project = await prisma.project.findFirst({
     where: {
