@@ -1,4 +1,4 @@
-import { fontHeading, fontSans, fontUrban } from '@/assets/fonts'
+import { fontCustom, fontHeading, fontSans, fontUrban } from '@/assets/fonts'
 import { Analytics } from '@/components/analytics'
 import { ModalProvider } from '@/components/modal-provider'
 import { ThemeProvider } from '@/components/providers'
@@ -57,7 +57,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
           'min-h-screen bg-background font-sans antialiased',
           fontSans.variable,
           fontUrban.variable,
-          fontHeading.variable
+          fontHeading.variable,
+          fontCustom.variable
         )}>
         <ThemeProvider
           attribute='class'
