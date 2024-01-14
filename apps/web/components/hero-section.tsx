@@ -9,10 +9,10 @@ import { cn } from '@/lib/utils'
 
 const HeroSection = () => {
   return (
-    <section className='space-y-6 flex justify-center items-center'>
-      <div className=' flex max-w-[64rem] flex-col items-center gap-5 text-center pt-20 md:pt-28 '>
+    <section className='flex items-center justify-center space-y-6'>
+      <div className=' flex max-w-[64rem] flex-col items-center gap-5 pt-20 text-center md:pt-28 '>
         <h1
-          className='animate-fade-up text-balance font-urban text-4xl font-extrabold md:mt-12 tracking-tight opacity-0 sm:text-5xl md:text-6xl lg:text-7xl'
+          className='animate-fade-up text-balance font-urban text-4xl font-extrabold tracking-tight opacity-0 sm:text-5xl md:mt-12 md:text-6xl lg:text-7xl'
           style={{ animationDelay: '0.25s', animationFillMode: 'forwards' }}>
           Make Documentation{' '}
           <span className='text-gradient_indigo-purple font-extrabold'>
@@ -22,7 +22,7 @@ const HeroSection = () => {
         <div
           className='animate-fade-up opacity-0'
           style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}>
-          <p className=' text-lg md:text-xl text-gray-700 '>
+          <p className=' text-lg text-gray-700 md:text-xl '>
             Streamline your documentation journey and achieve your goals with
             ease.
           </p>

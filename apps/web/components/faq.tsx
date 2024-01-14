@@ -50,15 +50,15 @@ export const FAQs = () => {
   }
 
   return (
-    <section className=' my-16 drop-shadow-xl max-w-3xl mx-auto offset-y-0 offset-x-8'>
-      <div className=' flex  flex-col items-center gap-5 text-center pt-10 md:pt-20 '>
-        <h2 className='text-lg tracking-tight bg-white border border-gray-700 rounded-full px-4 dark:text-black  w-max '>
+    <section className=' offset-y-0 offset-x-8 mx-auto my-16 max-w-3xl drop-shadow-xl'>
+      <div className=' flex  flex-col items-center gap-5 pt-10 text-center md:pt-20 '>
+        <h2 className='w-max rounded-full border border-gray-700 bg-white px-4 text-lg tracking-tight  dark:text-black '>
           FAQs
         </h2>
-        <h3 className='text-2xl font-semibold md:mt-4 max-w-screen-md tracking-tight sm:text-3xl md:text-4xl lg:text-5xl'>
+        <h3 className='max-w-screen-md text-2xl font-semibold tracking-tight sm:text-3xl md:mt-4 md:text-4xl lg:text-5xl'>
           Frequently Asked Questions
         </h3>
-        <p className=' text-lg md:text-xl text-gray-700 max-w-screen-md  '>
+        <p className=' max-w-screen-md text-lg text-gray-700 md:text-xl  '>
           Here are some of the most frequently asked questions about Docuconvo.
         </p>
         <div className=' mt-16 w-full'>
@@ -76,7 +76,7 @@ export const FAQs = () => {
               )}>
               <h2 className=' mb-0'>
                 <button
-                  className='group relative flex w-full font-semibold items-center rounded-t-lg border-0 bg-white dark:bg-black py-4 px-5 text-left text-base text-neutral-800 dark:text-white transition'
+                  className='group relative flex w-full items-center rounded-t-lg border-0 bg-white px-5 py-4 text-left text-base font-semibold text-neutral-800 transition dark:bg-black dark:text-white'
                   type='button'
                   aria-expanded={accordionItem.isOpen}
                   onClick={() => accordionClickHandle(accordionItem.id)}>

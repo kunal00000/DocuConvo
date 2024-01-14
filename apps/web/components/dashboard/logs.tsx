@@ -34,7 +34,7 @@ const Logs = ({ project }) => {
     }
 
     fetchLogs()
-  }, [])
+  }, [project.id])
 
   const messageReceived = (message: string) => {
     setLogs((logs) => [...logs, message])
@@ -76,19 +76,19 @@ const Logs = ({ project }) => {
                   <div className='border-panel-border-interior-light dark:border-panel-border-interior-dark border-t'>
                     <ul
                       ref={listRef}
-                      className=' bg-slate-800 relative min-h-[275px] max-h-[325px] px-4 py-6 pb-16 overflow-scroll'>
+                      className=' relative max-h-[325px] min-h-[275px] overflow-scroll bg-slate-800 px-4 py-6 pb-16'>
                       {logs.length > 0 ? (
                         logs.map((log, index) => (
                           <li
                             key={index}
-                            className='text-white/80 text-nowrap leading-loose text-sm font-mono'>
+                            className='text-nowrap font-mono text-sm leading-loose text-white/80'>
                             {log}
                           </li>
                         ))
                       ) : isLoading ? (
                         <Icons.spinner className='m-auto size-6 animate-spin text-white/90' />
                       ) : (
-                        <li className='text-white/80 text-nowrap leading-loose text-sm font-mono'>
+                        <li className='text-nowrap font-mono text-sm leading-loose text-white/80'>
                           No logs yet
                         </li>
                       )}

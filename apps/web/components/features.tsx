@@ -23,15 +23,15 @@ const ContentImageData = [
 
 const Features = () => {
   return (
-    <section className='space-y-6 flex justify-center items-center'>
-      <div className=' flex max-w-[64rem] flex-col items-center gap-5 text-center pt-10 md:pt-20 '>
-        <h2 className='text-lg tracking-tight bg-white border border-gray-700 rounded-full px-4 dark:text-black  '>
+    <section className='flex items-center justify-center space-y-6'>
+      <div className=' flex max-w-[64rem] flex-col items-center gap-5 pt-10 text-center md:pt-20 '>
+        <h2 className='rounded-full border border-gray-700 bg-white px-4 text-lg tracking-tight dark:text-black  '>
           Features
         </h2>
-        <h3 className='text-2xl font-semibold md:mt-4 max-w-screen-md tracking-tight sm:text-3xl md:text-4xl lg:text-5xl'>
+        <h3 className='max-w-screen-md text-2xl font-semibold tracking-tight sm:text-3xl md:mt-4 md:text-4xl lg:text-5xl'>
           Simplify Your Documentation Journey with Docuconvo
         </h3>
-        <p className=' text-lg md:text-xl text-gray-700 max-w-screen-md  '>
+        <p className=' max-w-screen-md text-lg text-gray-700 md:text-xl  '>
           Our application crawls the entire documentation website provided by
           the organization to Create the undifited Knowledge Base. This
           knowledge base is then used to generate the answers to the queries.
@@ -40,7 +40,7 @@ const Features = () => {
           {ContentImageData.map((item) => (
             <div
               key={item.id}
-              className=' grid md:grid-cols-2 gap-10 md:gap-12'>
+              className=' grid gap-10 md:grid-cols-2 md:gap-12'>
               <div
                 className={`rounded-3xl ${
                   item.align === 'left' ? 'md:order-1' : ''
@@ -51,16 +51,16 @@ const Features = () => {
                   height={512}
                   objectFit='cover'
                   alt='Process Banner 1'
-                  className='drop-shadow-xl rounded-2xl w-full    blur-16'
+                  className='blur-16 w-full rounded-2xl    drop-shadow-xl'
                 />
               </div>
               <div
                 className={` text-start ${
                   item.align === 'left'
-                    ? 'md:pr-16 lg:pr-24 xl:pr-32 ml-auto'
-                    : 'md:pl-16 lg:pl-24 xl:pl-32  mr-auto'
-                } my-auto content text-black/60 dark:text-white/60`}>
-                <h3 className='mb-6 text-xl md:text-2xl font-semibold text-black dark:text-white'>
+                    ? 'ml-auto md:pr-16 lg:pr-24 xl:pr-32'
+                    : 'mr-auto md:pl-16 lg:pl-24  xl:pl-32'
+                } content my-auto text-black/60 dark:text-white/60`}>
+                <h3 className='mb-6 text-xl font-semibold text-black md:text-2xl dark:text-white'>
                   {item.title}
                 </h3>
                 <p>{item.content}</p>
