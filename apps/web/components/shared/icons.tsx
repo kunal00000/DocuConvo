@@ -21,7 +21,8 @@ import {
   User,
   X,
   LucideIcon,
-  ClipboardCopy
+  ClipboardCopy,
+  TerminalSquare
 } from 'lucide-react'
 
 export type Icon = LucideIcon
@@ -34,6 +35,7 @@ export const Icons = {
   clipboard: ClipboardCopy,
   close: X,
   ellipsis: MoreVertical,
+  logs: TerminalSquare,
   gitHub: ({ ...props }: LucideProps) => (
     <svg
       aria-hidden='true'

@@ -89,6 +89,7 @@ model Project {
   updatedAt               DateTime       @default(now()) @map("updated_at")
   creatorId               String?
   Creator                 User?          @relation(fields: [creatorId], references: [id])
+  logMessage              logMessage[]
 
   @@index([id, creatorId])
   @@map("projects")
@@ -105,4 +106,11 @@ enum ProjectStatus {
   pinecone
   openai
   embedding
+}
+
+model logMessage {
+  id        String  @id @default(cuid())
+  message   String
+  project   Project @relation(fields: [projectId], references: [id])
+  projectId String
 }
