@@ -18,15 +18,7 @@ export const metadata = {
     template: `%s | ${siteConfig.name}`
   },
   description: siteConfig.description,
-  keywords: [
-    'Next.js',
-    'React',
-    'Prisma',
-    'Auth.js',
-    'shadcn ui',
-    'Resend',
-    'React Email'
-  ],
+  keywords: ['Docuconvo', 'Docuconvo.com', 'ai docs', 'chat with docs'],
   authors: [
     {
       name: 'Kunal Verma'
@@ -53,8 +45,7 @@ export const metadata = {
     icon: '/favicon.ico',
     shortcut: '/favicon-16x16.png',
     apple: '/apple-touch-icon.png'
-  },
-  manifest: `${siteConfig.url}/site.webmanifest`
+  }
 }
 
 export default function RootLayout({ children }: RootLayoutProps) {
