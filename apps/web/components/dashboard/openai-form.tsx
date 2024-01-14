@@ -16,6 +16,8 @@ import NextBackButton from './next-back-button'
 
 type FormData = z.infer<typeof openAiSchema>
 
+const NEXT_PUBLIC_API_AUTH_TOKEN = process.env.NEXT_PUBLIC_API_AUTH_TOKEN || ''
+
 const OpenAIForm = ({
   project,
   pinecone,
@@ -33,44 +35,54 @@ const OpenAIForm = ({
     resolver: zodResolver(openAiSchema)
   })
 
-  const generateEmbedding = async () => {
-    await fetch('http://localhost:3000/api/queue', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${process.env.Authtoken}`
-      },
-      body: JSON.stringify(project)
-    })
+  const generateEmbedding = async (createdProject) => {
+    try {
+      if (!createdProject) throw new Error('No project id')
+
+      await fetch('http://localhost:3000/api/queue', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${NEXT_PUBLIC_API_AUTH_TOKEN}`
+        },
+        body: JSON.stringify(createdProject)
+      })
+    } catch (error) {
+      throw new Error(error)
+    }
   }
   const router = useRouter()
   const onSubmitForm = async (data: FormData) => {
-    setIsLoading(true)
-    const { status, message, id } = await createProject({
-      project,
-      pinecone,
-      openai: data
-    })
-    setIsLoading(false)
-    if (status === 'error') {
-      toast({
-        title: 'Something went wrong.',
-        description: message + ' Please try again.',
-        variant: 'destructive'
+    try {
+      setIsLoading(true)
+      const { status, message, createdProject } = await createProject({
+        project,
+        pinecone,
+        openai: data
       })
-    } else {
-      toast({
-        title: 'Success!',
-        description: message,
-        variant: 'default'
-      })
-      onClose()
-      updateData({ project: {}, pinecone: {}, openai: {} })
-      previousStep()
-      previousStep()
-      generateEmbedding()
+      setIsLoading(false)
+      if (status === 'error') {
+        toast({
+          title: 'Something went wrong.',
+          description: message + ' Please try again.',
+          variant: 'destructive'
+        })
+      } else {
+        toast({
+          title: 'Success!',
+          description: message,
+          variant: 'default'
+        })
+        onClose()
+        updateData({ project: {}, pinecone: {}, openai: {} })
+        previousStep()
+        previousStep()
+        generateEmbedding(createdProject)
 
-      router.push(`/dashboard/${id}`)
+        router.push(`/dashboard/${createdProject?.id}/logs`)
+      }
+    } catch (err) {
+      console.log(err)
     }
   }
 

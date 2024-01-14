@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { notFound } from 'next/navigation'
 
 import { DashboardHeader } from '@/components/dashboard/header'
 import { Icons } from '@/components/shared/icons'
@@ -8,6 +9,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
 
 export function DocsHeader({ project, items }) {
+  if (!project) notFound()
   return (
     <div>
       <DashboardHeader
@@ -45,7 +47,7 @@ export function DocsHeader({ project, items }) {
           </CardContent>
         </Card>
         <Card className='mr-2 border  p-1'>
-          {project?.status !== 'created' ? (
+          {project?.status == 'created' ? (
             <div className='group flex items-center gap-2 rounded-md px-3 py-[2px] text-sm font-medium'>
               <div className='h-3 w-3 animate-pulse rounded-full bg-green-400'></div>
               Running
@@ -53,8 +55,8 @@ export function DocsHeader({ project, items }) {
           ) : (
             <div className='group flex cursor-wait items-center gap-2 rounded-md px-3 py-[2px] text-sm font-medium'>
               <>
-                <Icons.spinner className='  size-6 animate-spin text-orange-400' />
-                <span className=''>Processing</span>
+                <Icons.spinner className='size-4 animate-spin text-orange-400' />
+                <span>Processing</span>
               </>
             </div>
           )}
