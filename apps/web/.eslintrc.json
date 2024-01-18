@@ -12,6 +12,7 @@
     "react/jsx-key": "off",
     "tailwindcss/no-custom-classname": "off",
     "tailwindcss/classnames-order": "off",
+    "tailwindcss/no-contradicting-classname": "off",
     "no-unused-vars": "off", 
 		"unused-imports/no-unused-imports": "error"
   },
