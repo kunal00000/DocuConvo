@@ -30,7 +30,9 @@ const MagicLinkEmail = ({
     <Head />
     <Preview>
       {/* TODO: write better preview text for email */}
-      The sales intelligence platform that helps you uncover qualified leads.
+      {mailType === 'login'
+        ? `Sign in to ${siteName}`
+        : `Activate your ${siteName} account`}
     </Preview>
     <Tailwind>
       <Body className='bg-white font-sans'>

@@ -32,7 +32,7 @@ export async function POST(req: Request) {
 
   try {
     const data = await resend.emails.send({
-      from: 'DocuConvo <onboarding@resend.dev>',
+      from: 'DocuConvo <team@docuconvo.com>',
       to: [bodyData.email],
       subject: 'Onboarding Mail From DocuConvo',
       react: DocuConvoWelcomeEmail({
