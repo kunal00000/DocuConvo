@@ -18,7 +18,7 @@ export default async function MarketingLayout({
       <Suspense fallback='...'>
         <NavBar user={user} items={marketingConfig.mainNav} scroll={true} />
       </Suspense>
-      <main className='checks-container flex-1'>{children}</main>
+      <main>{children}</main>
     </div>
   )
 }

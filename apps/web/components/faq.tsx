@@ -36,7 +36,9 @@ const accordionData = [
 
 export const FAQs = () => {
   return (
-    <section className='offset-y-0 offset-x-8 mx-auto my-16 max-w-3xl drop-shadow-xl'>
+    <section
+      id={'faqs'}
+      className='offset-y-0 offset-x-8 mx-auto my-16 max-w-3xl drop-shadow-xl'>
       <div className='flex flex-col items-center gap-5 pt-10'>
         <h3 className='max-w-screen-md text-2xl font-semibold tracking-tight sm:text-3xl md:mt-4 md:text-4xl lg:text-5xl'>
           Frequently Asked Questions
