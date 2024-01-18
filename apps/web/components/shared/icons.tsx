@@ -20,9 +20,13 @@ import {
   Trash,
   User,
   X,
+  Bot,
   LucideIcon,
   ClipboardCopy,
-  TerminalSquare
+  TerminalSquare,
+  Asterisk,
+  MousePointerSquare,
+  Database
 } from 'lucide-react'
 
 export type Icon = LucideIcon
@@ -79,6 +83,10 @@ export const Icons = {
   spinner: Loader2,
   sun: SunMedium,
   trash: Trash,
+  asterisk: Asterisk,
+  MousePointerSquare,
+  database: Database,
+  bot: Bot,
   twitter: ({ ...props }: LucideProps) => (
     <svg
       xmlns='http://www.w3.org/2000/svg'

@@ -6,44 +6,29 @@ import { User } from 'next-auth'
 
 import { Button, buttonVariants } from '@/components/ui/button'
 import { useSigninModal } from '@/hooks/use-modal'
-import useScroll from '@/hooks/use-scroll'
 import { cn } from '@/lib/utils'
 import { MainNavItem } from '@/types'
 
 import { MainNav } from './main-nav'
-import { ModeToggle } from './mode-toggle'
 import { UserAccountNav } from './user-account-nav'
 
 interface NavBarProps {
   user: Pick<User, 'name' | 'image' | 'email'> | undefined
   items?: MainNavItem[]
   children?: React.ReactNode
-  rightElements?: React.ReactNode
   scroll?: boolean
 }
 
-export function NavBar({
-  user,
-  items,
-  children,
-  rightElements,
-  scroll = false
-}: NavBarProps) {
-  const scrolled = useScroll(50)
+export function NavBar({ user, items, children }: NavBarProps) {
   const signInModal = useSigninModal()
 
   return (
     <header
-      className={`sticky top-0 z-40 flex w-full justify-center bg-background/60 backdrop-blur-xl transition-all ${
-        scroll ? (scrolled ? 'border-b' : 'bg-background/0') : 'border-b'
-      }`}>
-      <div className='container flex h-16 items-center justify-between py-4'>
+      className={`sticky top-0 z-40 flex w-full justify-center bg-background/60 backdrop-blur-xl transition-all border-b`}>
+      <div className='container flex h-16 items-center justify-between py-4 mx-auto'>
         <MainNav items={items}>{children}</MainNav>
 
         <div className='flex items-center space-x-3'>
-          {rightElements}
-
-          <ModeToggle />
           {!user ? (
             <Link
               href='/login'
@@ -67,6 +52,7 @@ export function NavBar({
           )}
         </div>
       </div>
+      <div className='absolute -bottom-5 z-50 h-10 w-full [mask:linear-gradient(90deg,transparent,black_20%,black_80%,transparent)] before:absolute before:inset-0 before:top-5 before:h-[1px] before:bg-gradient-to-r before:from-[#AE48FF] before:via-[#6C47FF] before:via-[25%] before:to-[#18CCFC] before:opacity-20 before:blur-[2px] after:absolute after:inset-0 after:left-1/2 after:top-5 after:h-[1px] after:w-full after:-translate-x-1/2 after:bg-gradient-to-r after:from-[#AE48FF] after:via-[#6C47FF] after:via-[25%] after:to-[#18CCFC] after:[mask:linear-gradient(90deg,transparent,black,black,transparent)]' />
     </header>
   )
 }
