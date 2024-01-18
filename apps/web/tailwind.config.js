@@ -64,7 +64,8 @@ module.exports = {
       fontFamily: {
         sans: ['var(--font-sans)', ...fontFamily.sans],
         urban: ['var(--font-urban)', ...fontFamily.sans],
-        heading: ['var(--font-heading)', ...fontFamily.sans]
+        heading: ['var(--font-heading)', ...fontFamily.sans],
+        custom: ['var(--font-custom)', ...fontFamily.sans]
       },
       keyframes: {
         'accordion-down': {
