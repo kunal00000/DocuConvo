@@ -1,5 +1,7 @@
 'use client'
 
+import { useEffect, useRef } from 'react'
+
 import {
   Accordion,
   AccordionContent,
@@ -35,9 +37,28 @@ const accordionData = [
 ]
 
 export const FAQs = () => {
+  const divRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          divRef.current?.classList.add('animate-fade-x')
+        }
+      })
+    })
+
+    observer.observe(divRef.current!)
+
+    return () => {
+      observer.unobserve(divRef.current!)
+    }
+  }, [])
+
   return (
     <section
       id={'faqs'}
+      ref={divRef}
       className='offset-y-0 offset-x-8 mx-auto my-16 max-w-3xl drop-shadow-xl'>
       <div className='flex flex-col items-center gap-5 pt-10 p-4 text-center'>
         <h3 className='max-w-screen-md text-2xl font-semibold tracking-tight sm:text-3xl md:mt-4 md:text-4xl lg:text-5xl font-custom'>
@@ -56,7 +77,7 @@ export const FAQs = () => {
                 <AccordionTrigger className='text-left'>
                   {accordionItem.title}
                 </AccordionTrigger>
-                <AccordionContent className='text-base'>
+                <AccordionContent className='text-base text-left'>
                   {accordionItem.content}
                 </AccordionContent>
               </AccordionItem>

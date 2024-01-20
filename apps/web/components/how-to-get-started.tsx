@@ -1,3 +1,7 @@
+'use client'
+
+import { useEffect, useRef } from 'react'
+
 import Image from 'next/image'
 
 import { Icons } from './shared/icons'
@@ -55,8 +59,29 @@ const content = [
 ]
 
 export const HowToGetStarted = () => {
+  const divRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          divRef.current?.classList.add('animate-fade-x')
+        }
+      })
+    })
+
+    observer.observe(divRef.current!)
+
+    return () => {
+      observer.unobserve(divRef.current!)
+    }
+  }, [])
+
   return (
-    <div id={'get-started'} className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
+    <div
+      id={'get-started'}
+      className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'
+      ref={divRef}>
       <div className='text-center font-custom'>
         <p className='text-xs md:text-sm font-bold uppercase tracking-wider md:tracking-widest text-gray-700'>
           a complete{' '}

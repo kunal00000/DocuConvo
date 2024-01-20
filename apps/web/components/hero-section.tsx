@@ -50,7 +50,7 @@ const HeroSection = () => {
 
         <Link
           href='/dashboard'
-          className='cursor-pointer mx-auto bg-black border-transparent flex shadow-md box-border select-none hover:opacity-80 items-center gap-2 border px-4 py-2 rounded-[14px] w-fit text-md md:text-lg'>
+          className='cursor-pointer mx-auto bg-black border-transparent flex shadow-md box-border select-none hover:opacity-80 items-center gap-2 border px-4 py-2 rounded-[14px] w-fit text-md md:text-lg hover:scale-110 active:scale-90 transition-transform ease-in-out duration-200'>
           <span className='body-medium font-medium text-white'>
             Start for free
           </span>
@@ -84,7 +84,7 @@ const HeroSection = () => {
             />
             <div
               className={cn(
-                'absolute inset-0 isolate -z-10 overflow-hidden before:absolute before:inset-0 before:bg-[url(/img/grid.svg)] before:[mask:radial-gradient(ellipse_farthest-side_at_50%_-25vw,black,transparent)] dark:before:opacity-10'
+                'absolute inset-0 isolate -z-10 overflow-hidden before:absolute before:inset-0 dark:before:opacity-10'
               )}>
               <div
                 className={cn(

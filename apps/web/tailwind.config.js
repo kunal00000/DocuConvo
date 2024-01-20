@@ -80,7 +80,7 @@ module.exports = {
         'fade-up': {
           '0%': {
             opacity: 0,
-            transform: 'translateY(10px)'
+            transform: 'translateY(50px)'
           },
           '80%': {
             opacity: 0.7
@@ -88,6 +88,19 @@ module.exports = {
           '100%': {
             opacity: 1,
             transform: 'translateY(0px)'
+          }
+        },
+        'fade-x': {
+          '0%': {
+            opacity: 0,
+            transform: 'translateY(5rem)'
+          },
+          '80%': {
+            opacity: 0.7
+          },
+          '100%': {
+            opacity: 1,
+            transform: 'translateY(0rem)'
           }
         },
         'fade-down': {
@@ -133,6 +146,7 @@ module.exports = {
         // Fade up and down
         'fade-up': 'fade-up 0.5s',
         'fade-down': 'fade-down 0.5s',
+        'fade-x': 'fade-x 0.75s',
 
         // Fade in and out
         'fade-in': 'fade-in 0.4s',

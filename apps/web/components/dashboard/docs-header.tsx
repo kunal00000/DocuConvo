@@ -49,13 +49,19 @@ export function DocsHeader({ project, items }) {
         <Card className='mr-2 border  p-1'>
           {project?.status == 'created' ? (
             <div className='group flex items-center gap-2 rounded-md px-3 py-[2px] text-sm font-medium'>
-              <div className='h-3 w-3 animate-pulse rounded-full bg-green-400'></div>
+              <div className='flex relative h-3 w-3'>
+                <span className='animate-ping absolute h-3 w-3 -top-0 -left-0 rounded-full bg-green-600 opacity-75'></span>
+                <span className='relative rounded-full h-3 w-3 -top-0 -left-0 bg-green-600'></span>
+              </div>
               Running
             </div>
           ) : (
-            <div className='group flex cursor-wait items-center gap-2 rounded-md px-3 py-[2px] text-sm font-medium'>
+            <div className='group flex cursor-wait items-center gap-2 rounded-md px-2 py-[2px] text-sm font-medium'>
               <>
-                <Icons.spinner className='size-4 animate-spin text-orange-400' />
+                <div className='flex relative h-3 w-3'>
+                  <span className='animate-ping absolute h-3 w-3 -top-0 -left-0 rounded-full bg-orange-600 opacity-75'></span>
+                  <span className='relative rounded-full h-3 w-3 -top-0 -left-0 bg-orange-600'></span>
+                </div>
                 <span>Processing</span>
               </>
             </div>
