@@ -41,11 +41,8 @@ export const authOptions: NextAuthOptions = {
 
         try {
           await resend.emails.send({
-            from: 'DocuConvo App <onboarding@resend.dev>',
-            to:
-              process.env.NODE_ENV === 'development'
-                ? 'kunalverma2468@gmail.com'
-                : identifier,
+            from: 'DocuConvo App <team@docuconvo.com>',
+            to: identifier,
             subject: authSubject,
             react: MagicLinkEmail({
               firstName: user?.name as string,
