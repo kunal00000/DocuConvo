@@ -58,7 +58,7 @@ export const HowToGetStarted = () => {
   return (
     <div id={'get-started'} className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
       <div className='text-center font-custom'>
-        <p className='text-[0.65rem] md:text-sm font-bold uppercase tracking-wider md:tracking-widest text-gray-700'>
+        <p className='text-xs md:text-sm font-bold uppercase tracking-wider md:tracking-widest text-gray-700'>
           a complete{' '}
           <span className='text-gradient_indigo-purple'>
             Documentation Search{' '}
@@ -68,7 +68,7 @@ export const HowToGetStarted = () => {
         <h2 className='mt-6 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl'>
           Get Started in 4 Easy Steps
         </h2>
-        <p className='mx-auto mt-4 max-w-2xl text-sm font-normal text-gray-700 lg:text-xl lg:leading-8'>
+        <p className='text-md text-gray-700 dark:text-white/85 md:text-lg mx-auto font-custom mt-4 max-w-2xl font-normal lg:leading-8'>
           Going through documentation can take up a lot of time. DocuConvo is
           simple yet powerful tool designed to make this process simpler.
         </p>
