@@ -4,8 +4,7 @@ import Link from 'next/link'
 
 import { User } from 'next-auth'
 
-import { Button, buttonVariants } from '@/components/ui/button'
-import { useSigninModal } from '@/hooks/use-modal'
+import { buttonVariants } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { MainNavItem } from '@/types'
 
@@ -21,7 +20,6 @@ interface NavBarProps {
 }
 
 export function NavBar({ user, items, children }: NavBarProps) {
-  const signInModal = useSigninModal()
 
   return (
     <header
@@ -37,21 +35,14 @@ export function NavBar({ user, items, children }: NavBarProps) {
               className={cn(
                 buttonVariants({ variant: 'outline', size: 'sm' })
               )}>
-              Login Page
+              Login
             </Link>
           ) : null}
 
-          {user ? (
+          {user &&
             <UserAccountNav user={user} />
-          ) : (
-            <Button
-              className='px-3'
-              variant='default'
-              size='sm'
-              onClick={signInModal.onOpen}>
-              Sign In
-            </Button>
-          )}
+          }
+
         </div>
       </div>
       <div
