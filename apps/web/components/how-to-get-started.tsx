@@ -84,14 +84,14 @@ export const HowToGetStarted = () => {
       className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'
       ref={divRef}>
       <div className='text-center font-custom'>
-        <p className='text-xs md:text-sm font-bold uppercase tracking-wider md:tracking-widest text-gray-700'>
+        <p className='text-xs md:text-sm font-bold uppercase tracking-wider md:tracking-widest text-gray-700 dark:text-slate-50'>
           a complete{' '}
           <span className='text-gradient_indigo-purple'>
             Documentation Search{' '}
           </span>
           Solution
         </p>
-        <h2 className='mt-6 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl'>
+        <h2 className='mt-6 text-3xl font-bold tracking-tight text-gray-900 dark:text-slate-100 sm:text-4xl lg:text-5xl'>
           Get Started in 4 Easy Steps
         </h2>
         <p className='text-md text-gray-700 dark:text-white/85 md:text-lg mx-auto font-custom mt-4 max-w-2xl font-normal lg:leading-8'>
@@ -120,16 +120,16 @@ export const HowToGetStarted = () => {
                 className={`md:self-center ${
                   item.id % 2 == 0 ? 'md:order-1' : ''
                 } `}>
-                <div className='inline-flex h-14 w-14 items-center justify-center rounded-xl border border-gray-200 bg-gray-50'>
+                <div className='inline-flex h-14 w-14 items-center justify-center rounded-xl border border-gray-200 dark:border-gray-400 bg-gray-50 dark:bg-black'>
                   <item.icon />
                 </div>
-                <h3 className='mt-4 text-2xl font-bold text-gray-900 sm:text-3xl'>
+                <h3 className='mt-4 text-2xl font-bold text-gray-900 dark:text-white/95 sm:text-3xl'>
                   {item.title}
                 </h3>
-                <h4 className='mt-2 text-base font-normal text-gray-700 lg:text-lg'>
+                <h4 className='mt-2 text-base font-normal text-gray-700 dark:text-white/80 lg:text-lg'>
                   {item.content}
                 </h4>
-                <ul className='mt-6 space-y-2 text-base font-normal text-gray-700 lg:text-lg'>
+                <ul className='mt-6 space-y-2 text-base font-normal text-gray-700 dark:text-white/85 lg:text-lg'>
                   {item.points.map((point, i) => {
                     return (
                       <li key={i} className='flex flex-col'>
@@ -139,7 +139,7 @@ export const HowToGetStarted = () => {
                         </div>
 
                         {item.pointExample ? (
-                          <p className='text-xs text-zinc-500 pl-8'>
+                          <p className='text-xs text-zinc-500 dark:text-white/60 pl-8'>
                             {item.pointExample[i]}
                           </p>
                         ) : null}

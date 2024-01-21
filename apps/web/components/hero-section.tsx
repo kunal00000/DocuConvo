@@ -10,7 +10,7 @@ const HeroSection = () => {
     <section className='flex items-center justify-center select-none'>
       <div className='flex max-w-[64rem] flex-col items-center gap-5 pt-20 text-center'>
         <a href={siteConfig.links.github} target='_blank' rel='noreferrer'>
-          <span className='inline-flex cursor-pointer items-center justify-center rounded-full border border-slate-800 border-opacity-[0.15] px-4 py-1 uppercase text-xs font-medium bg-gray-50 hover:bg-zinc-100'>
+          <span className='inline-flex cursor-pointer items-center justify-center rounded-full border border-slate-800 border-opacity-[0.15] px-4 py-1 uppercase text-xs font-medium bg-gray-50 dark:bg-slate-200 hover:bg-zinc-100 dark:hover:bg-slate-300 dark:text-black'>
             <Icons.gitHub className='mr-2 size-4' />
             <p>
               <span className='sm:inline-block'>Star on GitHub</span>
@@ -50,8 +50,8 @@ const HeroSection = () => {
 
         <Link
           href='/dashboard'
-          className='cursor-pointer mx-auto bg-black border-transparent flex shadow-md box-border select-none hover:opacity-80 items-center gap-2 border px-4 py-2 rounded-[14px] w-fit text-md md:text-lg hover:scale-110 active:scale-90 transition-transform ease-in-out duration-200'>
-          <span className='body-medium font-medium text-white'>
+          className='cursor-pointer mx-auto bg-black dark:bg-white border-transparent flex shadow-md box-border select-none hover:opacity-80 items-center gap-2 border px-4 py-2 rounded-[14px] w-fit text-md md:text-lg hover:scale-110 active:scale-90 transition-transform ease-in-out duration-200'>
+          <span className='body-medium font-medium text-white dark:text-black'>
             Start for free
           </span>
           <svg

@@ -10,6 +10,7 @@ import { cn } from '@/lib/utils'
 import { MainNavItem } from '@/types'
 
 import { MainNav } from './main-nav'
+import { ModeToggle } from './mode-toggle'
 import { UserAccountNav } from './user-account-nav'
 
 interface NavBarProps {
@@ -29,6 +30,7 @@ export function NavBar({ user, items, children }: NavBarProps) {
         <MainNav items={items}>{children}</MainNav>
 
         <div className='flex items-center space-x-3'>
+          <ModeToggle />
           {!user ? (
             <Link
               href='/login'
