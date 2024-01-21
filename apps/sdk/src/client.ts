@@ -1,5 +1,3 @@
-// TODO: Deployed url of API
-
 export class Docuconvo {
   private docuconvo_key: string
 
@@ -10,7 +8,7 @@ export class Docuconvo {
   public async search(searchQuery: string) {
     try {
       const response = await fetch(
-        `http://localhost:3000/api/query?q=${searchQuery}`,
+        `https://sea-lion-app-93tqw.ondigitalocean.app/api/query?q=${searchQuery}`,
         {
           headers: {
             Authorization: `Bearer ${this.docuconvo_key}`
