@@ -70,10 +70,11 @@ export const HowToGetStarted = () => {
       })
     })
 
-    observer.observe(divRef.current!)
+    console.log(divRef.current)
+    if (divRef.current) observer.observe(divRef.current)
 
     return () => {
-      observer.unobserve(divRef.current!)
+      if (divRef.current) observer.unobserve(divRef.current!)
     }
   }, [])
 

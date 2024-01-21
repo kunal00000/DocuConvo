@@ -93,7 +93,7 @@ module.exports = {
         'fade-x': {
           '0%': {
             opacity: 0,
-            transform: 'translateY(5rem)'
+            transform: 'translateY(8rem)'
           },
           '80%': {
             opacity: 0.7
