@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import Script from 'next/script'
 
 import { Icons } from '@/components/shared/icons'
 import { siteConfig } from '@/config/site'
@@ -7,10 +8,10 @@ import { cn } from '@/lib/utils'
 
 const HeroSection = () => {
   return (
-    <section className='flex items-center justify-center select-none'>
+    <section className='flex items-center justify-center'>
       <div className='flex max-w-[64rem] flex-col items-center gap-5 pt-20 text-center'>
         <a href={siteConfig.links.github} target='_blank' rel='noreferrer'>
-          <span className='inline-flex cursor-pointer items-center justify-center rounded-full border border-slate-800 border-opacity-[0.15] px-4 py-1 uppercase text-xs font-medium bg-gray-50 dark:bg-slate-200 hover:bg-zinc-100 dark:hover:bg-slate-300 dark:text-black'>
+          <span className='inline-flex cursor-pointer select-none items-center justify-center rounded-full border border-slate-800 border-opacity-[0.15] px-4 py-1 uppercase text-xs font-medium bg-gray-50 dark:bg-slate-200 hover:bg-zinc-100 dark:hover:bg-slate-300 dark:text-black'>
             <Icons.gitHub className='mr-2 size-4' />
             <p>
               <span className='sm:inline-block'>Star on GitHub</span>
@@ -67,15 +68,33 @@ const HeroSection = () => {
         </Link>
 
         <div className='my-16 select-none'>
-          <Image
-            src='/laptop.svg'
-            width={1024}
-            height={768}
-            alt='Page Banner'
-            style={{ objectFit: 'cover' }}
-            loading='eager'
-            className='mx-auto'
-          />
+          <div className='relative mx-auto '>
+            <Image
+              src='/laptop.svg'
+              width={1240}
+              height={800}
+              alt='demo'
+              priority
+            />
+            <div className='wistia_responsive_padding wistia_responsive_wrapper w-[67%] absolute top-[9%] left-[16.5%] z-10'>
+              <div
+                className='wistia_responsive_wrapper'
+                style={{
+                  height: '100%',
+                  width: '100%'
+                }}>
+                <iframe
+                  src='https://fast.wistia.net/embed/iframe/cbylydecn5?seo=true&videoFoam=true&playbackRate=1.25'
+                  title='Final recording Video'
+                  allow='fullscreen'
+                  className='wistia_embed'
+                  name='wistia_embed'
+                  width='100%'
+                  height='100%'
+                />
+              </div>
+            </div>
+          </div>
           <div className='relative min-h-16'>
             <div
               className={cn(
@@ -95,6 +114,9 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
+      <Script
+        src='https://fast.wistia.net/assets/external/E-v1.js'
+        async></Script>
     </section>
   )
 }
