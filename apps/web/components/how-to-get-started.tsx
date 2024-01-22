@@ -62,26 +62,30 @@ export const HowToGetStarted = () => {
   const divRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          divRef.current?.classList.add('animate-fade-x')
-        }
-      })
-    })
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.1) {
+            divRef.current?.classList.remove('opacity-0')
+            divRef.current?.classList.add('animate-fade-x')
+            observer.unobserve(divRef.current!)
+          }
+        })
+      },
+      { threshold: 0.1 }
+    )
 
-    console.log(divRef.current)
     if (divRef.current) observer.observe(divRef.current)
 
     return () => {
-      if (divRef.current) observer.unobserve(divRef.current!)
+      if (divRef.current) observer.unobserve(divRef.current)
     }
   }, [])
 
   return (
     <div
       id={'get-started'}
-      className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'
+      className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 opacity-0'
       ref={divRef}>
       <div className='text-center font-custom'>
         <p className='text-xs md:text-sm font-bold uppercase tracking-wider md:tracking-widest text-gray-700 dark:text-slate-50'>
@@ -112,7 +116,7 @@ export const HowToGetStarted = () => {
                   height={680}
                   alt='get-started-image'
                   style={{ objectFit: 'cover' }}
-                  loading='eager'
+                  priority
                   className='h-full w-full rounded-2xl border border-gray-200 object-cover shadow-xl select-none'
                 />
               </div>
