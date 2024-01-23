@@ -76,10 +76,6 @@ export const HowToGetStarted = () => {
     )
 
     if (divRef.current) observer.observe(divRef.current)
-
-    return () => {
-      if (divRef.current) observer.unobserve(divRef.current)
-    }
   }, [])
 
   return (
@@ -116,7 +112,7 @@ export const HowToGetStarted = () => {
                   height={680}
                   alt='get-started-image'
                   style={{ objectFit: 'cover' }}
-                  priority
+                  loading='lazy'
                   className='h-full w-full rounded-2xl border border-gray-200 object-cover shadow-xl select-none'
                 />
               </div>

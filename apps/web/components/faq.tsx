@@ -54,10 +54,6 @@ export const FAQs = () => {
     )
 
     if (divRef.current) observer.observe(divRef.current)
-
-    return () => {
-      if (divRef.current) observer.unobserve(divRef.current)
-    }
   }, [])
 
   return (

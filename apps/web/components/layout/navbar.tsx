@@ -20,7 +20,6 @@ interface NavBarProps {
 }
 
 export function NavBar({ user, items, children }: NavBarProps) {
-
   return (
     <header
       className={`sticky top-0 z-40 flex w-full justify-center bg-background/60 backdrop-blur-xl transition-all border-b`}>
@@ -39,10 +38,7 @@ export function NavBar({ user, items, children }: NavBarProps) {
             </Link>
           ) : null}
 
-          {user &&
-            <UserAccountNav user={user} />
-          }
-
+          {user && <UserAccountNav user={user} />}
         </div>
       </div>
       <div
