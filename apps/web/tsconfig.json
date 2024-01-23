@@ -17,7 +17,9 @@
     "noUnusedLocals": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "react": ["./node_modules/@types/react"],
+      "next":["./node_modules/@types/next"]
     },
     "plugins": [
       {
