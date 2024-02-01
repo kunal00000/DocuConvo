@@ -1,5 +1,4 @@
 import { fontCustom, fontHeading, fontSans, fontUrban } from '@/assets/fonts'
-import { Analytics } from '@/components/analytics'
 import { ModalProvider } from '@/components/modal-provider'
 import { ThemeProvider } from '@/components/providers'
 import { TailwindIndicator } from '@/components/tailwind-indicator'
@@ -66,7 +65,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
           enableSystem
           disableTransitionOnChange>
           {children}
-          <Analytics />
           <Toaster />
           <ModalProvider />
           <TailwindIndicator />

@@ -29,8 +29,6 @@
     "@splinetool/runtime": "^1.0.8",
     "@supabase/supabase-js": "^2.39.3",
     "@typescript-eslint/parser": "^6.15.0",
-    "@vercel/analytics": "^1.1.1",
-    "@vercel/og": "^0.6.0",
     "axios": "^1.6.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
