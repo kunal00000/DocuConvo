@@ -36,7 +36,7 @@ const accordionData = [
   }
 ]
 
-export const FAQs = () => {
+const FAQs = () => {
   const divRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -89,3 +89,5 @@ export const FAQs = () => {
     </section>
   )
 }
+
+export default FAQs
