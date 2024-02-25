@@ -26,7 +26,8 @@ import {
   TerminalSquare,
   Asterisk,
   MousePointerSquare,
-  Database
+  Database,
+  MessageCircle
 } from 'lucide-react'
 
 export type Icon = LucideIcon
@@ -40,6 +41,7 @@ export const Icons = {
   close: X,
   ellipsis: MoreVertical,
   logs: TerminalSquare,
+  chat: MessageCircle,
   gitHub: ({ ...props }: LucideProps) => (
     <svg
       aria-hidden='true'

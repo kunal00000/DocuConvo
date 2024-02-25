@@ -31,6 +31,11 @@ export const dashboardConfig: DashboardConfig = {
       icon: 'logs'
     },
     {
+      title: 'Chat',
+      href: '/chat',
+      icon: 'chat'
+    },
+    {
       title: 'Settings',
       href: '/settings',
       icon: 'settings'

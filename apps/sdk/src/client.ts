@@ -8,7 +8,7 @@ export class Docuconvo {
   public async search(searchQuery: string) {
     try {
       const response = await fetch(
-        `https://sea-lion-app-93tqw.ondigitalocean.app/api/query?q=${searchQuery}`,
+        `https://docuconvo-core.onrender.com/api/query?q=${searchQuery}`,
         {
           headers: {
             Authorization: `Bearer ${this.docuconvo_key}`
