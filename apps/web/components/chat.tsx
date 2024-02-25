@@ -1,5 +1,7 @@
 'use client'
 
+import ReactMarkdown from 'react-markdown'
+
 import { useChat } from '@/hooks/use-chat'
 
 import { Icons } from './shared/icons'
@@ -20,7 +22,7 @@ const Chat = ({ project }) => {
                   src='https://dummyimage.com/128x128/354ea1/ffffff&text=G'
                 />
                 <div className='flex min-h-[85px] rounded-b-xl rounded-tr-xl bg-slate-50 p-4 dark:bg-slate-800 sm:min-h-0 sm:max-w-md md:max-w-2xl'>
-                  <p>{m.content}</p>
+                  <ReactMarkdown>{m.content}</ReactMarkdown>
                 </div>
                 <div className='ml-2 mt-1 flex flex-col-reverse gap-2 text-slate-500 sm:flex-row'>
                   <button className='hover:text-blue-600'>
