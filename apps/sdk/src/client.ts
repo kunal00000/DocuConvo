@@ -8,7 +8,7 @@ export class Docuconvo {
   public async search(searchQuery: string) {
     try {
       const response = await fetch(
-        `https://docuconvo-core.onrender.com/api/query?q=${searchQuery}`,
+        `https://docuconvo-core.onrender.com/api/query`,
         {
           method: 'POST',
           headers: {

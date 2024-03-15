@@ -1,15 +1,11 @@
-import { Metadata } from 'next'
+'use client'
+
 import Link from 'next/link'
 
 import { UserAuthForm } from '@/components/forms/user-auth-form'
 import { Icons } from '@/components/shared/icons'
 import { buttonVariants } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
-
-export const metadata: Metadata = {
-  title: 'Login',
-  description: 'Login to your account'
-}
 
 export default function LoginPage() {
   return (
