@@ -10,9 +10,13 @@ export class Docuconvo {
       const response = await fetch(
         `https://docuconvo-core.onrender.com/api/query?q=${searchQuery}`,
         {
+          method: 'POST',
           headers: {
             Authorization: `Bearer ${this.docuconvo_key}`
-          }
+          },
+          body: JSON.stringify({
+            messages: [{ content: searchQuery, role: 'user' }]
+          })
         }
       )
 
