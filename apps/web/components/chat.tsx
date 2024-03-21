@@ -12,7 +12,7 @@ const Chat = ({ project }) => {
 
   const { messages, input, handleInputChange, handleSubmit, isLoading } =
     useChat({
-      api: 'http://localhost:3000/api/query',
+      api: `${process.env.NEXT_PUBLIC_API_URL}/api/query`,
       headers: { Authorization: `Bearer ${project.docuconvo_key}` }
     })
 
